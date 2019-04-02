@@ -429,6 +429,19 @@
   <script src="https://code.highcharts.com/modules/series-label.js"></script>
   <script src="https://code.highcharts.com/modules/annotations.js"></script>
   <script src="js/charts.js"></script>
+  <script>
+    for (var i = 1; i < 50; i++) {
+      (function(i) {
+        var key = 'chart' + i;
+
+        setTimeout(function() {
+          if (typeof charts[key] === 'function') {
+            (charts[key])();
+          }
+        }, i * 1000);
+      })(i);
+    }
+  </script>
 
 </body>
 
