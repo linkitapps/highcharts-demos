@@ -1,6 +1,7 @@
 var charts = {
     chart1: function() {
         Highcharts.chart('chart1', {
+            credits: { enabled: false }, 
 
             title: {
                 text: 'Solar Employment Growth by Sector, 2010-2016'
@@ -66,7 +67,7 @@ var charts = {
     },
     chart2: function() {
         Highcharts.chart('chart2', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'line'
             },
             title: {
@@ -1987,7 +1988,7 @@ var charts = {
         // Now create the chart
         Highcharts.chart('chart3', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'area',
                 zoomType: 'x',
                 panning: true,
@@ -2178,7 +2179,7 @@ var charts = {
             function (data) {
         
                 Highcharts.chart('chart4', {
-                    chart: {
+                    credits: { enabled: false }, chart: {
                         zoomType: 'x'
                     },
                     title: {
@@ -2239,7 +2240,7 @@ var charts = {
         // Data retrieved from http://vikjavev.no/ver/index.php?spenn=2d&sluttid=16.06.2015.
 
         Highcharts.chart('chart5', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'spline',
                 scrollablePlotArea: {
                     minWidth: 600,
@@ -2426,7 +2427,7 @@ var charts = {
         console.time('line');
         Highcharts.chart('chart6', {
         
-            chart: {
+            credits: { enabled: false }, chart: {
                 zoomType: 'x'
             },
         
@@ -2457,7 +2458,7 @@ var charts = {
     },
     chart7: function() {
         Highcharts.chart('chart7', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'area'
             },
             title: {
@@ -2532,7 +2533,7 @@ var charts = {
     },
     chart8: function() {
         Highcharts.chart('chart8', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'area'
             },
             title: {
@@ -2558,7 +2559,7 @@ var charts = {
     },
     chart9: function() {
         Highcharts.chart('chart9', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'area'
             },
             title: {
@@ -2619,7 +2620,7 @@ var charts = {
     },
     chart10: function() {
         Highcharts.chart('chart10', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'area'
             },
             title: {
@@ -2680,7 +2681,7 @@ var charts = {
         
                 Highcharts.chart('chart11', {
         
-                    chart: {
+                    credits: { enabled: false }, chart: {
                         type: 'arearange',
                         zoomType: 'x',
                         scrollablePlotArea: {
@@ -2792,6 +2793,7 @@ var charts = {
         
         
         Highcharts.chart('chart12', {
+        credits: { enabled: false }, 
         
         title: {
             text: 'July temperatures'
@@ -2842,7 +2844,7 @@ var charts = {
     },
     chart13: function() {
         Highcharts.chart('chart13', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'bar'
             },
             title: {
@@ -2908,7 +2910,7 @@ var charts = {
     },
     chart14: function() {
         Highcharts.chart('chart14', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'bar'
             },
             title: {
@@ -2956,7 +2958,7 @@ var charts = {
         ];
 
         Highcharts.chart('chart15', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'bar'
             },
             title: {
@@ -3028,7 +3030,7 @@ var charts = {
     },
     chart16: function() {
         Highcharts.chart('chart16', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column'
             },
             title: {
@@ -3095,7 +3097,7 @@ var charts = {
     },
     chart17: function() {
         Highcharts.chart('chart17', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column'
             },
             title: {
@@ -3122,7 +3124,7 @@ var charts = {
     chart18: function() {
         Highcharts.chart('chart18', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column'
             },
         
@@ -3177,7 +3179,7 @@ var charts = {
     },
     chart19: function() {
         Highcharts.chart('chart19', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column'
             },
             title: {
@@ -3249,7 +3251,7 @@ var charts = {
     },
     chart20: function() {
         Highcharts.chart('chart20', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column'
             },
             title: {
@@ -3326,7 +3328,7 @@ var charts = {
     chart21: function() {
         Highcharts.chart('chart21', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'columnrange',
                 inverted: true
             },
@@ -3389,7 +3391,7 @@ var charts = {
     },
     chart22: function() {
         Highcharts.chart('chart22', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
@@ -3452,7 +3454,7 @@ var charts = {
     },
     chart23: function() {
         Highcharts.chart('chart23', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
@@ -3716,7 +3718,7 @@ var charts = {
 
         // Create the chart
         Highcharts.chart('chart24', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'pie'
             },
             title: {
@@ -3778,7 +3780,7 @@ var charts = {
     },
     chart25: function() {
         Highcharts.chart('chart25', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: 0,
                 plotShadow: false
@@ -3832,7 +3834,7 @@ var charts = {
     chart26: function() {
         // Create the chart
         Highcharts.chart('chart26', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'pie'
             },
             title: {
@@ -4122,7 +4124,7 @@ var charts = {
     },
     chart27: function() {
         Highcharts.chart('chart27', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'variablepie'
             },
             title: {
@@ -4173,7 +4175,7 @@ var charts = {
     },
     chart28: function() {
         Highcharts.chart('chart28', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'scatter',
                 zoomType: 'xy'
             },
@@ -4362,7 +4364,7 @@ var charts = {
         console.time('scatter');
         Highcharts.chart('chart29', {
 
-        chart: {
+        credits: { enabled: false }, chart: {
             zoomType: 'xy',
             height: '100%'
         },
@@ -4416,7 +4418,7 @@ var charts = {
     chart30: function() {
         Highcharts.chart('chart30', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'bubble',
                 plotBorderWidth: 1,
                 zoomType: 'xy'
@@ -4531,7 +4533,7 @@ var charts = {
     chart31: function() {
         Highcharts.chart('chart31', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'bubble',
                 plotBorderWidth: 1,
                 zoomType: 'xy'
@@ -4608,7 +4610,7 @@ var charts = {
     },
     chart32: function() {
         Highcharts.chart('chart32', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'packedbubble',
                 height: '100%'
             },
@@ -5122,7 +5124,7 @@ var charts = {
     },
     chart33: function() {
         Highcharts.chart('chart33', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'packedbubble',
                 height: '100%'
             },
@@ -5639,7 +5641,7 @@ var charts = {
     },
     chart34: function() {
         Highcharts.chart('chart34', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'spline'
             },
         
@@ -5757,7 +5759,7 @@ var charts = {
     },
     chart35: function() {
         Highcharts.chart('chart35', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'pie'
             },
         
@@ -5889,7 +5891,7 @@ var charts = {
 
         // Create chart
         var chart = Highcharts.chart('chart36', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'lowmedhigh'
             },
             accessibility: {
@@ -5990,7 +5992,7 @@ var charts = {
     chart37: function() {
         // Set up the chart
         var chart = new Highcharts.Chart({
-            chart: {
+            credits: { enabled: false }, chart: {
                 renderTo: 'chart37',
                 type: 'column',
                 options3d: {
@@ -6034,7 +6036,7 @@ var charts = {
     },
     chart38: function() {
         Highcharts.chart('chart38', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'cylinder',
                 options3d: {
                     enabled: true,
@@ -6063,7 +6065,7 @@ var charts = {
     chart39: function() {
         // Set up the chart
         Highcharts.chart('chart39', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'funnel3d',
                 options3d: {
                     enabled: true,
@@ -6104,7 +6106,7 @@ var charts = {
     },
     chart40: function() {
         Highcharts.chart('chart40', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'column',
                 options3d: {
                     enabled: true,
@@ -6171,7 +6173,7 @@ var charts = {
     },
     chart41: function() {
         Highcharts.chart('chart41', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'pie',
                 options3d: {
                     enabled: true,
@@ -6226,7 +6228,7 @@ var charts = {
 
         // Set up the chart
         var chart = new Highcharts.Chart({
-            chart: {
+            credits: { enabled: false }, chart: {
                 renderTo: 'chart42',
                 margin: 100,
                 type: 'scatter3d',
@@ -6318,7 +6320,7 @@ var charts = {
                     e = chart.pointer.normalize(e);
 
                     chart.update({
-                        chart: {
+                        credits: { enabled: false }, chart: {
                             options3d: {
                                 alpha: alpha + (e.chartY - posY) / sensitivity,
                                 beta: beta + (posX - e.chartX) / sensitivity
@@ -6350,7 +6352,7 @@ var charts = {
     chart43: function() {
         Highcharts.chart('chart43', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'gauge',
                 plotBackgroundColor: null,
                 plotBackgroundImage: null,
@@ -6464,7 +6466,7 @@ var charts = {
     chart44: function() {
         var gaugeOptions = {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'solidgauge'
             },
 
@@ -6567,7 +6569,7 @@ var charts = {
     },
     chart45: function() {
         Highcharts.setOptions({
-            chart: {
+            credits: { enabled: false }, chart: {
                 inverted: true,
                 marginLeft: 135,
                 type: 'bullet'
@@ -6600,7 +6602,7 @@ var charts = {
         });
         
         Highcharts.chart('chart45', {
-            chart: {
+            credits: { enabled: false }, chart: {
                 marginTop: 40
             },
             title: {
@@ -6639,7 +6641,7 @@ var charts = {
     chart46: function() {
         Highcharts.chart('chart46', {
 
-            chart: {
+            credits: { enabled: false }, chart: {
                 type: 'heatmap',
                 marginTop: 40,
                 marginBottom: 80,
