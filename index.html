@@ -22,6 +22,32 @@
     .chart {
       height: 400px;
     }
+
+    .outer {
+      width: 600px;
+      height: 200px;
+      margin: 0 auto;
+    }
+    .outer .chart-container {
+      width: 300px;
+      float: left;
+      height: 200px;
+    }
+    .highcharts-yaxis-grid .highcharts-grid-line {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .outer {
+        width: 100%;
+        height: 400px;
+      }
+      .outer .chart-container {
+        width: 300px;
+        float: none;
+        margin: 0 auto;
+      }
+    }
   </style>
 
 </head>
@@ -520,7 +546,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pie with gradient fill</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Pie with drilldown</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -553,7 +579,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h3 mb-0 text-gray-800">Charts</h2>
+            <h2 class="h3 mb-0 text-gray-800">스캐터 차트 / 버블 차트</h2>
           </div>
 
           <!-- Content Row -->
@@ -565,13 +591,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Scatter plot</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart28" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -582,13 +608,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Scatter plot with 1 million points</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart29" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -599,13 +625,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bubble chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart30" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -616,13 +642,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D bubbles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart31" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -633,13 +659,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Packed bubble chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart32" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -650,13 +676,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Split Packed bubble chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart33" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -666,7 +692,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h3 mb-0 text-gray-800">Charts</h2>
+            <h2 class="h3 mb-0 text-gray-800">접근성 차트</h2>
           </div>
 
           <!-- Content Row -->
@@ -678,13 +704,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Accessible line chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart34" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -695,13 +721,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Accessible pie chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart35" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -712,64 +738,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Advanced accessible chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chart -->
-            <div class="col-4">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="pt-4 pb-2">
-                    <!-- 차트 -->
-                    <div class="chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chart -->
-            <div class="col-4">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="pt-4 pb-2">
-                    <!-- 차트 -->
-                    <div class="chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chart -->
-            <div class="col-4">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="pt-4 pb-2">
-                    <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart36" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -779,7 +754,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h3 mb-0 text-gray-800">Charts</h2>
+            <h2 class="h3 mb-0 text-gray-800">3D 차트</h2>
           </div>
 
           <!-- Content Row -->
@@ -791,13 +766,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D column</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart37" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -808,13 +783,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D cylinder</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart38" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -825,13 +800,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D funnel</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart39" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -842,13 +817,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D column with stacking and grouping</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart40" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -859,13 +834,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D donut</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart41" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -876,13 +851,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">3D scatter chart</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart42" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -892,7 +867,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h3 mb-0 text-gray-800">Charts</h2>
+            <h2 class="h3 mb-0 text-gray-800">게이지 차트</h2>
           </div>
 
           <!-- Content Row -->
@@ -904,13 +879,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Gauge series</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart43" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -921,13 +896,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Solid gauge</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart44" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -938,13 +913,43 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bullet graph</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div style="height:270px;">
+                      <div id="chart45" class="chart" style="margin-top:130px; height:115px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h2 class="h3 mb-0 text-gray-800">히트맵 / 트리맵</h2>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Chart -->
+            <div class="col-4">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Heat map</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="pt-4 pb-2">
+                    <!-- 차트 -->
+                    <div id="chart46" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -955,13 +960,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart1</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Tree map with color axis</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart47" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -972,30 +977,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Tree map with levels</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <!-- 차트 -->
-                    <div class="chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chart -->
-            <div class="col-4">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">chart2</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="pt-4 pb-2">
-                    <!-- 차트 -->
-                    <div class="chart"></div>
+                    <div id="chart48" class="chart"></div>
                   </div>
                 </div>
               </div>
@@ -1013,7 +1001,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Highcharts Demos</span>
+            <span>Highcharts 데모</span>
           </div>
         </div>
       </footer>
@@ -1042,9 +1030,21 @@
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+  <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+  <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+  <script src="https://code.highcharts.com/modules/boost.js"></script>
   <script src="https://code.highcharts.com/modules/series-label.js"></script>
   <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
   <script src="https://code.highcharts.com/modules/annotations.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+  <script src="https://code.highcharts.com/modules/bullet.js"></script>
+  <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+  <script src="https://code.highcharts.com/modules/treemap.js"></script>
   <script src="js/charts.js"></script>
   <script>
     for (var i = 1; i < 50; i++) {

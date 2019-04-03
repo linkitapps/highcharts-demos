@@ -3830,62 +3830,294 @@ var charts = {
         });
     },
     chart26: function() {
-        // Radialize the colors
-        Highcharts.setOptions({
-            colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
-                return {
-                    radialGradient: {
-                        cx: 0.5,
-                        cy: 0.3,
-                        r: 0.7
-                    },
-                    stops: [
-                        [0, color],
-                        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                    ]
-                };
-            })
-        });
-
-        // Build the chart
+        // Create the chart
         Highcharts.chart('chart26', {
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
                 type: 'pie'
             },
             title: {
-                text: 'Browser market shares in January, 2018'
+                text: 'Browser market shares. January, 2018'
             },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            subtitle: {
+                text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
             },
             plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
+                series: {
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        style: {
-                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                        },
-                        connectorColor: 'silver'
+                        format: '{point.name}: {point.y:.1f}%'
                     }
                 }
             },
-            series: [{
-                name: 'Share',
-                data: [
-                    { name: 'Chrome', y: 61.41 },
-                    { name: 'Internet Explorer', y: 11.84 },
-                    { name: 'Firefox', y: 10.85 },
-                    { name: 'Edge', y: 4.67 },
-                    { name: 'Safari', y: 4.18 },
-                    { name: 'Other', y: 7.05 }
+
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+            },
+
+            "series": [
+                {
+                    "name": "Browsers",
+                    "colorByPoint": true,
+                    "data": [
+                        {
+                            "name": "Chrome",
+                            "y": 62.74,
+                            "drilldown": "Chrome"
+                        },
+                        {
+                            "name": "Firefox",
+                            "y": 10.57,
+                            "drilldown": "Firefox"
+                        },
+                        {
+                            "name": "Internet Explorer",
+                            "y": 7.23,
+                            "drilldown": "Internet Explorer"
+                        },
+                        {
+                            "name": "Safari",
+                            "y": 5.58,
+                            "drilldown": "Safari"
+                        },
+                        {
+                            "name": "Edge",
+                            "y": 4.02,
+                            "drilldown": "Edge"
+                        },
+                        {
+                            "name": "Opera",
+                            "y": 1.92,
+                            "drilldown": "Opera"
+                        },
+                        {
+                            "name": "Other",
+                            "y": 7.62,
+                            "drilldown": null
+                        }
+                    ]
+                }
+            ],
+            "drilldown": {
+                "series": [
+                    {
+                        "name": "Chrome",
+                        "id": "Chrome",
+                        "data": [
+                            [
+                                "v65.0",
+                                0.1
+                            ],
+                            [
+                                "v64.0",
+                                1.3
+                            ],
+                            [
+                                "v63.0",
+                                53.02
+                            ],
+                            [
+                                "v62.0",
+                                1.4
+                            ],
+                            [
+                                "v61.0",
+                                0.88
+                            ],
+                            [
+                                "v60.0",
+                                0.56
+                            ],
+                            [
+                                "v59.0",
+                                0.45
+                            ],
+                            [
+                                "v58.0",
+                                0.49
+                            ],
+                            [
+                                "v57.0",
+                                0.32
+                            ],
+                            [
+                                "v56.0",
+                                0.29
+                            ],
+                            [
+                                "v55.0",
+                                0.79
+                            ],
+                            [
+                                "v54.0",
+                                0.18
+                            ],
+                            [
+                                "v51.0",
+                                0.13
+                            ],
+                            [
+                                "v49.0",
+                                2.16
+                            ],
+                            [
+                                "v48.0",
+                                0.13
+                            ],
+                            [
+                                "v47.0",
+                                0.11
+                            ],
+                            [
+                                "v43.0",
+                                0.17
+                            ],
+                            [
+                                "v29.0",
+                                0.26
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Firefox",
+                        "id": "Firefox",
+                        "data": [
+                            [
+                                "v58.0",
+                                1.02
+                            ],
+                            [
+                                "v57.0",
+                                7.36
+                            ],
+                            [
+                                "v56.0",
+                                0.35
+                            ],
+                            [
+                                "v55.0",
+                                0.11
+                            ],
+                            [
+                                "v54.0",
+                                0.1
+                            ],
+                            [
+                                "v52.0",
+                                0.95
+                            ],
+                            [
+                                "v51.0",
+                                0.15
+                            ],
+                            [
+                                "v50.0",
+                                0.1
+                            ],
+                            [
+                                "v48.0",
+                                0.31
+                            ],
+                            [
+                                "v47.0",
+                                0.12
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Internet Explorer",
+                        "id": "Internet Explorer",
+                        "data": [
+                            [
+                                "v11.0",
+                                6.2
+                            ],
+                            [
+                                "v10.0",
+                                0.29
+                            ],
+                            [
+                                "v9.0",
+                                0.27
+                            ],
+                            [
+                                "v8.0",
+                                0.47
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Safari",
+                        "id": "Safari",
+                        "data": [
+                            [
+                                "v11.0",
+                                3.39
+                            ],
+                            [
+                                "v10.1",
+                                0.96
+                            ],
+                            [
+                                "v10.0",
+                                0.36
+                            ],
+                            [
+                                "v9.1",
+                                0.54
+                            ],
+                            [
+                                "v9.0",
+                                0.13
+                            ],
+                            [
+                                "v5.1",
+                                0.2
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Edge",
+                        "id": "Edge",
+                        "data": [
+                            [
+                                "v16",
+                                2.6
+                            ],
+                            [
+                                "v15",
+                                0.92
+                            ],
+                            [
+                                "v14",
+                                0.4
+                            ],
+                            [
+                                "v13",
+                                0.1
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Opera",
+                        "id": "Opera",
+                        "data": [
+                            [
+                                "v50.0",
+                                0.96
+                            ],
+                            [
+                                "v49.0",
+                                0.82
+                            ],
+                            [
+                                "v12.1",
+                                0.14
+                            ]
+                        ]
+                    }
                 ]
-            }]
+            }
         });
     },
     chart27: function() {
@@ -3940,12 +4172,2649 @@ var charts = {
         });        
     },
     chart28: function() {
+        Highcharts.chart('chart28', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Height Versus Weight of 507 Individuals by Gender'
+            },
+            subtitle: {
+                text: 'Source: Heinz  2003'
+            },
+            xAxis: {
+                title: {
+                    enabled: true,
+                    text: 'Height (cm)'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: 'Weight (kg)'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                borderWidth: 1
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x} cm, {point.y} kg'
+                    }
+                }
+            },
+            series: [{
+                name: 'Female',
+                color: 'rgba(223, 83, 83, .5)',
+                data: [[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
+                    [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
+                    [172.5, 55.2], [170.9, 54.2], [172.9, 62.5], [153.4, 42.0], [160.0, 50.0],
+                    [147.2, 49.8], [168.2, 49.2], [175.0, 73.2], [157.0, 47.8], [167.6, 68.8],
+                    [159.5, 50.6], [175.0, 82.5], [166.8, 57.2], [176.5, 87.8], [170.2, 72.8],
+                    [174.0, 54.5], [173.0, 59.8], [179.9, 67.3], [170.5, 67.8], [160.0, 47.0],
+                    [154.4, 46.2], [162.0, 55.0], [176.5, 83.0], [160.0, 54.4], [152.0, 45.8],
+                    [162.1, 53.6], [170.0, 73.2], [160.2, 52.1], [161.3, 67.9], [166.4, 56.6],
+                    [168.9, 62.3], [163.8, 58.5], [167.6, 54.5], [160.0, 50.2], [161.3, 60.3],
+                    [167.6, 58.3], [165.1, 56.2], [160.0, 50.2], [170.0, 72.9], [157.5, 59.8],
+                    [167.6, 61.0], [160.7, 69.1], [163.2, 55.9], [152.4, 46.5], [157.5, 54.3],
+                    [168.3, 54.8], [180.3, 60.7], [165.5, 60.0], [165.0, 62.0], [164.5, 60.3],
+                    [156.0, 52.7], [160.0, 74.3], [163.0, 62.0], [165.7, 73.1], [161.0, 80.0],
+                    [162.0, 54.7], [166.0, 53.2], [174.0, 75.7], [172.7, 61.1], [167.6, 55.7],
+                    [151.1, 48.7], [164.5, 52.3], [163.5, 50.0], [152.0, 59.3], [169.0, 62.5],
+                    [164.0, 55.7], [161.2, 54.8], [155.0, 45.9], [170.0, 70.6], [176.2, 67.2],
+                    [170.0, 69.4], [162.5, 58.2], [170.3, 64.8], [164.1, 71.6], [169.5, 52.8],
+                    [163.2, 59.8], [154.5, 49.0], [159.8, 50.0], [173.2, 69.2], [170.0, 55.9],
+                    [161.4, 63.4], [169.0, 58.2], [166.2, 58.6], [159.4, 45.7], [162.5, 52.2],
+                    [159.0, 48.6], [162.8, 57.8], [159.0, 55.6], [179.8, 66.8], [162.9, 59.4],
+                    [161.0, 53.6], [151.1, 73.2], [168.2, 53.4], [168.9, 69.0], [173.2, 58.4],
+                    [171.8, 56.2], [178.0, 70.6], [164.3, 59.8], [163.0, 72.0], [168.5, 65.2],
+                    [166.8, 56.6], [172.7, 105.2], [163.5, 51.8], [169.4, 63.4], [167.8, 59.0],
+                    [159.5, 47.6], [167.6, 63.0], [161.2, 55.2], [160.0, 45.0], [163.2, 54.0],
+                    [162.2, 50.2], [161.3, 60.2], [149.5, 44.8], [157.5, 58.8], [163.2, 56.4],
+                    [172.7, 62.0], [155.0, 49.2], [156.5, 67.2], [164.0, 53.8], [160.9, 54.4],
+                    [162.8, 58.0], [167.0, 59.8], [160.0, 54.8], [160.0, 43.2], [168.9, 60.5],
+                    [158.2, 46.4], [156.0, 64.4], [160.0, 48.8], [167.1, 62.2], [158.0, 55.5],
+                    [167.6, 57.8], [156.0, 54.6], [162.1, 59.2], [173.4, 52.7], [159.8, 53.2],
+                    [170.5, 64.5], [159.2, 51.8], [157.5, 56.0], [161.3, 63.6], [162.6, 63.2],
+                    [160.0, 59.5], [168.9, 56.8], [165.1, 64.1], [162.6, 50.0], [165.1, 72.3],
+                    [166.4, 55.0], [160.0, 55.9], [152.4, 60.4], [170.2, 69.1], [162.6, 84.5],
+                    [170.2, 55.9], [158.8, 55.5], [172.7, 69.5], [167.6, 76.4], [162.6, 61.4],
+                    [167.6, 65.9], [156.2, 58.6], [175.2, 66.8], [172.1, 56.6], [162.6, 58.6],
+                    [160.0, 55.9], [165.1, 59.1], [182.9, 81.8], [166.4, 70.7], [165.1, 56.8],
+                    [177.8, 60.0], [165.1, 58.2], [175.3, 72.7], [154.9, 54.1], [158.8, 49.1],
+                    [172.7, 75.9], [168.9, 55.0], [161.3, 57.3], [167.6, 55.0], [165.1, 65.5],
+                    [175.3, 65.5], [157.5, 48.6], [163.8, 58.6], [167.6, 63.6], [165.1, 55.2],
+                    [165.1, 62.7], [168.9, 56.6], [162.6, 53.9], [164.5, 63.2], [176.5, 73.6],
+                    [168.9, 62.0], [175.3, 63.6], [159.4, 53.2], [160.0, 53.4], [170.2, 55.0],
+                    [162.6, 70.5], [167.6, 54.5], [162.6, 54.5], [160.7, 55.9], [160.0, 59.0],
+                    [157.5, 63.6], [162.6, 54.5], [152.4, 47.3], [170.2, 67.7], [165.1, 80.9],
+                    [172.7, 70.5], [165.1, 60.9], [170.2, 63.6], [170.2, 54.5], [170.2, 59.1],
+                    [161.3, 70.5], [167.6, 52.7], [167.6, 62.7], [165.1, 86.3], [162.6, 66.4],
+                    [152.4, 67.3], [168.9, 63.0], [170.2, 73.6], [175.2, 62.3], [175.2, 57.7],
+                    [160.0, 55.4], [165.1, 104.1], [174.0, 55.5], [170.2, 77.3], [160.0, 80.5],
+                    [167.6, 64.5], [167.6, 72.3], [167.6, 61.4], [154.9, 58.2], [162.6, 81.8],
+                    [175.3, 63.6], [171.4, 53.4], [157.5, 54.5], [165.1, 53.6], [160.0, 60.0],
+                    [174.0, 73.6], [162.6, 61.4], [174.0, 55.5], [162.6, 63.6], [161.3, 60.9],
+                    [156.2, 60.0], [149.9, 46.8], [169.5, 57.3], [160.0, 64.1], [175.3, 63.6],
+                    [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
+                    [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]]
         
+            }, {
+                name: 'Male',
+                color: 'rgba(119, 152, 191, .5)',
+                data: [[174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
+                    [181.5, 74.8], [184.0, 86.4], [184.5, 78.4], [175.0, 62.0], [184.0, 81.6],
+                    [180.0, 76.6], [177.8, 83.6], [192.0, 90.0], [176.0, 74.6], [174.0, 71.0],
+                    [184.0, 79.6], [192.7, 93.8], [171.5, 70.0], [173.0, 72.4], [176.0, 85.9],
+                    [176.0, 78.8], [180.5, 77.8], [172.7, 66.2], [176.0, 86.4], [173.5, 81.8],
+                    [178.0, 89.6], [180.3, 82.8], [180.3, 76.4], [164.5, 63.2], [173.0, 60.9],
+                    [183.5, 74.8], [175.5, 70.0], [188.0, 72.4], [189.2, 84.1], [172.8, 69.1],
+                    [170.0, 59.5], [182.0, 67.2], [170.0, 61.3], [177.8, 68.6], [184.2, 80.1],
+                    [186.7, 87.8], [171.4, 84.7], [172.7, 73.4], [175.3, 72.1], [180.3, 82.6],
+                    [182.9, 88.7], [188.0, 84.1], [177.2, 94.1], [172.1, 74.9], [167.0, 59.1],
+                    [169.5, 75.6], [174.0, 86.2], [172.7, 75.3], [182.2, 87.1], [164.1, 55.2],
+                    [163.0, 57.0], [171.5, 61.4], [184.2, 76.8], [174.0, 86.8], [174.0, 72.2],
+                    [177.0, 71.6], [186.0, 84.8], [167.0, 68.2], [171.8, 66.1], [182.0, 72.0],
+                    [167.0, 64.6], [177.8, 74.8], [164.5, 70.0], [192.0, 101.6], [175.5, 63.2],
+                    [171.2, 79.1], [181.6, 78.9], [167.4, 67.7], [181.1, 66.0], [177.0, 68.2],
+                    [174.5, 63.9], [177.5, 72.0], [170.5, 56.8], [182.4, 74.5], [197.1, 90.9],
+                    [180.1, 93.0], [175.5, 80.9], [180.6, 72.7], [184.4, 68.0], [175.5, 70.9],
+                    [180.6, 72.5], [177.0, 72.5], [177.1, 83.4], [181.6, 75.5], [176.5, 73.0],
+                    [175.0, 70.2], [174.0, 73.4], [165.1, 70.5], [177.0, 68.9], [192.0, 102.3],
+                    [176.5, 68.4], [169.4, 65.9], [182.1, 75.7], [179.8, 84.5], [175.3, 87.7],
+                    [184.9, 86.4], [177.3, 73.2], [167.4, 53.9], [178.1, 72.0], [168.9, 55.5],
+                    [157.2, 58.4], [180.3, 83.2], [170.2, 72.7], [177.8, 64.1], [172.7, 72.3],
+                    [165.1, 65.0], [186.7, 86.4], [165.1, 65.0], [174.0, 88.6], [175.3, 84.1],
+                    [185.4, 66.8], [177.8, 75.5], [180.3, 93.2], [180.3, 82.7], [177.8, 58.0],
+                    [177.8, 79.5], [177.8, 78.6], [177.8, 71.8], [177.8, 116.4], [163.8, 72.2],
+                    [188.0, 83.6], [198.1, 85.5], [175.3, 90.9], [166.4, 85.9], [190.5, 89.1],
+                    [166.4, 75.0], [177.8, 77.7], [179.7, 86.4], [172.7, 90.9], [190.5, 73.6],
+                    [185.4, 76.4], [168.9, 69.1], [167.6, 84.5], [175.3, 64.5], [170.2, 69.1],
+                    [190.5, 108.6], [177.8, 86.4], [190.5, 80.9], [177.8, 87.7], [184.2, 94.5],
+                    [176.5, 80.2], [177.8, 72.0], [180.3, 71.4], [171.4, 72.7], [172.7, 84.1],
+                    [172.7, 76.8], [177.8, 63.6], [177.8, 80.9], [182.9, 80.9], [170.2, 85.5],
+                    [167.6, 68.6], [175.3, 67.7], [165.1, 66.4], [185.4, 102.3], [181.6, 70.5],
+                    [172.7, 95.9], [190.5, 84.1], [179.1, 87.3], [175.3, 71.8], [170.2, 65.9],
+                    [193.0, 95.9], [171.4, 91.4], [177.8, 81.8], [177.8, 96.8], [167.6, 69.1],
+                    [167.6, 82.7], [180.3, 75.5], [182.9, 79.5], [176.5, 73.6], [186.7, 91.8],
+                    [188.0, 84.1], [188.0, 85.9], [177.8, 81.8], [174.0, 82.5], [177.8, 80.5],
+                    [171.4, 70.0], [185.4, 81.8], [185.4, 84.1], [188.0, 90.5], [188.0, 91.4],
+                    [182.9, 89.1], [176.5, 85.0], [175.3, 69.1], [175.3, 73.6], [188.0, 80.5],
+                    [188.0, 82.7], [175.3, 86.4], [170.5, 67.7], [179.1, 92.7], [177.8, 93.6],
+                    [175.3, 70.9], [182.9, 75.0], [170.8, 93.2], [188.0, 93.2], [180.3, 77.7],
+                    [177.8, 61.4], [185.4, 94.1], [168.9, 75.0], [185.4, 83.6], [180.3, 85.5],
+                    [174.0, 73.9], [167.6, 66.8], [182.9, 87.3], [160.0, 72.3], [180.3, 88.6],
+                    [167.6, 75.5], [186.7, 101.4], [175.3, 91.1], [175.3, 67.3], [175.9, 77.7],
+                    [175.3, 81.8], [179.1, 75.5], [181.6, 84.5], [177.8, 76.6], [182.9, 85.0],
+                    [177.8, 102.5], [184.2, 77.3], [179.1, 71.8], [176.5, 87.9], [188.0, 94.3],
+                    [174.0, 70.9], [167.6, 64.5], [170.2, 77.3], [167.6, 72.3], [188.0, 87.3],
+                    [174.0, 80.0], [176.5, 82.3], [180.3, 73.6], [167.6, 74.1], [188.0, 85.9],
+                    [180.3, 73.2], [167.6, 76.3], [183.0, 65.9], [183.0, 90.9], [179.1, 89.1],
+                    [170.2, 62.3], [177.8, 82.7], [179.1, 79.1], [190.5, 98.2], [177.8, 84.1],
+                    [180.3, 83.2], [180.3, 83.2]]
+            }]
+        });
     },
     chart29: function() {
-        
+        // Prepare the data
+        var data = [],
+        n = 1000000,
+        i;
+        for (i = 0; i < n; i += 1) {
+        data.push([
+            Math.pow(Math.random(), 2) * 100,
+            Math.pow(Math.random(), 2) * 100
+        ]);
+        }
+
+        if (!Highcharts.Series.prototype.renderCanvas) {
+        throw 'Module not loaded';
+        }
+
+        console.time('scatter');
+        Highcharts.chart('chart29', {
+
+        chart: {
+            zoomType: 'xy',
+            height: '100%'
+        },
+
+        boost: {
+            useGPUTranslations: true,
+            usePreAllocated: true
+        },
+
+        xAxis: {
+            min: 0,
+            max: 100,
+            gridLineWidth: 1
+        },
+
+        yAxis: {
+            // Renders faster when we don't have to compute min and max
+            min: 0,
+            max: 100,
+            minPadding: 0,
+            maxPadding: 0,
+            title: {
+                text: null
+            }
+        },
+
+        title: {
+            text: 'Scatter chart with 1 million points'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        series: [{
+            type: 'scatter',
+            color: 'rgba(152,0,67,0.1)',
+            data: data,
+            marker: {
+                radius: 0.1
+            },
+            tooltip: {
+                followPointer: false,
+                pointFormat: '[{point.x:.1f}, {point.y:.1f}]'
+            }
+        }]
+
+        });
+        console.timeEnd('scatter');
     },
     chart30: function() {
+        Highcharts.chart('chart30', {
+
+            chart: {
+                type: 'bubble',
+                plotBorderWidth: 1,
+                zoomType: 'xy'
+            },
         
+            legend: {
+                enabled: false
+            },
+        
+            title: {
+                text: 'Sugar and fat intake per country'
+            },
+        
+            subtitle: {
+                text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>'
+            },
+        
+            xAxis: {
+                gridLineWidth: 1,
+                title: {
+                    text: 'Daily fat intake'
+                },
+                labels: {
+                    format: '{value} gr'
+                },
+                plotLines: [{
+                    color: 'black',
+                    dashStyle: 'dot',
+                    width: 2,
+                    value: 65,
+                    label: {
+                        rotation: 0,
+                        y: 15,
+                        style: {
+                            fontStyle: 'italic'
+                        },
+                        text: 'Safe fat intake 65g/day'
+                    },
+                    zIndex: 3
+                }]
+            },
+        
+            yAxis: {
+                startOnTick: false,
+                endOnTick: false,
+                title: {
+                    text: 'Daily sugar intake'
+                },
+                labels: {
+                    format: '{value} gr'
+                },
+                maxPadding: 0.2,
+                plotLines: [{
+                    color: 'black',
+                    dashStyle: 'dot',
+                    width: 2,
+                    value: 50,
+                    label: {
+                        align: 'right',
+                        style: {
+                            fontStyle: 'italic'
+                        },
+                        text: 'Safe sugar intake 50g/day',
+                        x: -10
+                    },
+                    zIndex: 3
+                }]
+            },
+        
+            tooltip: {
+                useHTML: true,
+                headerFormat: '<table>',
+                pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+                    '<tr><th>Fat intake:</th><td>{point.x}g</td></tr>' +
+                    '<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>' +
+                    '<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>',
+                footerFormat: '</table>',
+                followPointer: true
+            },
+        
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+        
+            series: [{
+                data: [
+                    { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
+                    { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
+                    { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
+                    { x: 80.4, y: 102.5, z: 12, name: 'NL', country: 'Netherlands' },
+                    { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: 'Sweden' },
+                    { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: 'Spain' },
+                    { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: 'France' },
+                    { x: 73.5, y: 83.1, z: 10, name: 'NO', country: 'Norway' },
+                    { x: 71, y: 93.2, z: 24.7, name: 'UK', country: 'United Kingdom' },
+                    { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: 'Italy' },
+                    { x: 68.6, y: 20, z: 16, name: 'RU', country: 'Russia' },
+                    { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
+                    { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
+                    { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
+                    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
+                ]
+            }]
+        
+        });
+    },
+    chart31: function() {
+        Highcharts.chart('chart31', {
+
+            chart: {
+                type: 'bubble',
+                plotBorderWidth: 1,
+                zoomType: 'xy'
+            },
+        
+            title: {
+                text: 'Highcharts bubbles with radial gradient fill'
+            },
+        
+            xAxis: {
+                gridLineWidth: 1
+            },
+        
+            yAxis: {
+                startOnTick: false,
+                endOnTick: false
+            },
+        
+            series: [{
+                data: [
+                    [9, 81, 63],
+                    [98, 5, 89],
+                    [51, 50, 73],
+                    [41, 22, 14],
+                    [58, 24, 20],
+                    [78, 37, 34],
+                    [55, 56, 53],
+                    [18, 45, 70],
+                    [42, 44, 28],
+                    [3, 52, 59],
+                    [31, 18, 97],
+                    [79, 91, 63],
+                    [93, 23, 23],
+                    [44, 83, 22]
+                ],
+                marker: {
+                    fillColor: {
+                        radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                        stops: [
+                            [0, 'rgba(255,255,255,0.5)'],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
+                        ]
+                    }
+                }
+            }, {
+                data: [
+                    [42, 38, 20],
+                    [6, 18, 1],
+                    [1, 93, 55],
+                    [57, 2, 90],
+                    [80, 76, 22],
+                    [11, 74, 96],
+                    [88, 56, 10],
+                    [30, 47, 49],
+                    [57, 62, 98],
+                    [4, 16, 16],
+                    [46, 10, 11],
+                    [22, 87, 89],
+                    [57, 91, 82],
+                    [45, 15, 98]
+                ],
+                marker: {
+                    fillColor: {
+                        radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                        stops: [
+                            [0, 'rgba(255,255,255,0.5)'],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                        ]
+                    }
+                }
+            }]
+        
+        });
+    },
+    chart32: function() {
+        Highcharts.chart('chart32', {
+            chart: {
+                type: 'packedbubble',
+                height: '100%'
+            },
+            title: {
+                text: 'Carbon emissions around the world (2014)'
+            },
+            tooltip: {
+                useHTML: true,
+                pointFormat: '<b>{point.name}:</b> {point.y}m CO<sub>2</sub>'
+            },
+            plotOptions: {
+                packedbubble: {
+                    minSize: '30%',
+                    maxSize: '120%',
+                    zMin: 0,
+                    zMax: 1000,
+                    layoutAlgorithm: {
+                        splitSeries: false,
+                        gravitationalConstant: 0.02
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}',
+                        filter: {
+                            property: 'y',
+                            operator: '>',
+                            value: 250
+                        },
+                        style: {
+                            color: 'black',
+                            textOutline: 'none',
+                            fontWeight: 'normal'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Europe',
+                data: [{
+                    name: 'Germany',
+                    value: 767.1
+                }, {
+                    name: 'Croatia',
+                    value: 20.7
+                },
+                {
+                    name: "Belgium",
+                    value: 97.2
+                },
+                {
+                    name: "Czech Republic",
+                    value: 111.7
+                },
+                {
+                    name: "Netherlands",
+                    value: 158.1
+                },
+                {
+                    name: "Spain",
+                    value: 241.6
+                },
+                {
+                    name: "Ukraine",
+                    value: 249.1
+                },
+                {
+                    name: "Poland",
+                    value: 298.1
+                },
+                {
+                    name: "France",
+                    value: 323.7
+                },
+                {
+                    name: "Romania",
+                    value: 78.3
+                },
+                {
+                    name: "United Kingdom",
+                    value: 415.4
+                }, {
+                    name: "Turkey",
+                    value: 353.2
+                }, {
+                    name: "Italy",
+                    value: 337.6
+                },
+                {
+                    name: "Greece",
+                    value: 71.1
+                },
+                {
+                    name: "Austria",
+                    value: 69.8
+                },
+                {
+                    name: "Belarus",
+                    value: 67.7
+                },
+                {
+                    name: "Serbia",
+                    value: 59.3
+                },
+                {
+                    name: "Finland",
+                    value: 54.8
+                },
+                {
+                    name: "Bulgaria",
+                    value: 51.2
+                },
+                {
+                    name: "Portugal",
+                    value: 48.3
+                },
+                {
+                    name: "Norway",
+                    value: 44.4
+                },
+                {
+                    name: "Sweden",
+                    value: 44.3
+                },
+                {
+                    name: "Hungary",
+                    value: 43.7
+                },
+                {
+                    name: "Switzerland",
+                    value: 40.2
+                },
+                {
+                    name: "Denmark",
+                    value: 40
+                },
+                {
+                    name: "Slovakia",
+                    value: 34.7
+                },
+                {
+                    name: "Ireland",
+                    value: 34.6
+                },
+                {
+                    name: "Croatia",
+                    value: 20.7
+                },
+                {
+                    name: "Estonia",
+                    value: 19.4
+                },
+                {
+                    name: "Slovenia",
+                    value: 16.7
+                },
+                {
+                    name: "Lithuania",
+                    value: 12.3
+                },
+                {
+                    name: "Luxembourg",
+                    value: 10.4
+                },
+                {
+                    name: "Macedonia",
+                    value: 9.5
+                },
+                {
+                    name: "Moldova",
+                    value: 7.8
+                },
+                {
+                    name: "Latvia",
+                    value: 7.5
+                },
+                {
+                    name: "Cyprus",
+                    value: 7.2
+                }]
+            }, {
+                name: 'Africa',
+                data: [{
+                    name: "Senegal",
+                    value: 8.2
+                },
+                {
+                    name: "Cameroon",
+                    value: 9.2
+                },
+                {
+                    name: "Zimbabwe",
+                    value: 13.1
+                },
+                {
+                    name: "Ghana",
+                    value: 14.1
+                },
+                {
+                    name: "Kenya",
+                    value: 14.1
+                },
+                {
+                    name: "Sudan",
+                    value: 17.3
+                },
+                {
+                    name: "Tunisia",
+                    value: 24.3
+                },
+                {
+                    name: "Angola",
+                    value: 25
+                },
+                {
+                    name: "Libya",
+                    value: 50.6
+                },
+                {
+                    name: "Ivory Coast",
+                    value: 7.3
+                },
+                {
+                    name: "Morocco",
+                    value: 60.7
+                },
+                {
+                    name: "Ethiopia",
+                    value: 8.9
+                },
+                {
+                    name: "United Republic of Tanzania",
+                    value: 9.1
+                },
+                {
+                    name: "Nigeria",
+                    value: 93.9
+                },
+                {
+                    name: "South Africa",
+                    value: 392.7
+                }, {
+                    name: "Egypt",
+                    value: 225.1
+                }, {
+                    name: "Algeria",
+                    value: 141.5
+                }]
+            }, {
+                name: 'Oceania',
+                data: [{
+                    name: "Australia",
+                    value: 409.4
+                },
+                {
+                    name: "New Zealand",
+                    value: 34.1
+                },
+                {
+                    name: "Papua New Guinea",
+                    value: 7.1
+                }]
+            }, {
+                name: 'North America',
+                data: [{
+                    name: "Costa Rica",
+                    value: 7.6
+                },
+                {
+                    name: "Honduras",
+                    value: 8.4
+                },
+                {
+                    name: "Jamaica",
+                    value: 8.3
+                },
+                {
+                    name: "Panama",
+                    value: 10.2
+                },
+                {
+                    name: "Guatemala",
+                    value: 12
+                },
+                {
+                    name: "Dominican Republic",
+                    value: 23.4
+                },
+                {
+                    name: "Cuba",
+                    value: 30.2
+                },
+                {
+                    name: "USA",
+                    value: 5334.5
+                }, {
+                    name: "Canada",
+                    value: 566
+                }, {
+                    name: "Mexico",
+                    value: 456.3
+                }]
+            }, {
+                name: 'South America',
+                data: [{
+                    name: "El Salvador",
+                    value: 7.2
+                },
+                {
+                    name: "Uruguay",
+                    value: 8.1
+                },
+                {
+                    name: "Bolivia",
+                    value: 17.8
+                },
+                {
+                    name: "Trinidad and Tobago",
+                    value: 34
+                },
+                {
+                    name: "Ecuador",
+                    value: 43
+                },
+                {
+                    name: "Chile",
+                    value: 78.6
+                },
+                {
+                    name: "Peru",
+                    value: 52
+                },
+                {
+                    name: "Colombia",
+                    value: 74.1
+                },
+                {
+                    name: "Brazil",
+                    value: 501.1
+                }, {
+                    name: "Argentina",
+                    value: 199
+                },
+                {
+                    name: "Venezuela",
+                    value: 195.2
+                }]
+            }, {
+                name: 'Asia',
+                data: [{
+                    name: "Nepal",
+                    value: 6.5
+                },
+                {
+                    name: "Georgia",
+                    value: 6.5
+                },
+                {
+                    name: "Brunei Darussalam",
+                    value: 7.4
+                },
+                {
+                    name: "Kyrgyzstan",
+                    value: 7.4
+                },
+                {
+                    name: "Afghanistan",
+                    value: 7.9
+                },
+                {
+                    name: "Myanmar",
+                    value: 9.1
+                },
+                {
+                    name: "Mongolia",
+                    value: 14.7
+                },
+                {
+                    name: "Sri Lanka",
+                    value: 16.6
+                },
+                {
+                    name: "Bahrain",
+                    value: 20.5
+                },
+                {
+                    name: "Yemen",
+                    value: 22.6
+                },
+                {
+                    name: "Jordan",
+                    value: 22.3
+                },
+                {
+                    name: "Lebanon",
+                    value: 21.1
+                },
+                {
+                    name: "Azerbaijan",
+                    value: 31.7
+                },
+                {
+                    name: "Singapore",
+                    value: 47.8
+                },
+                {
+                    name: "Hong Kong",
+                    value: 49.9
+                },
+                {
+                    name: "Syria",
+                    value: 52.7
+                },
+                {
+                    name: "DPR Korea",
+                    value: 59.9
+                },
+                {
+                    name: "Israel",
+                    value: 64.8
+                },
+                {
+                    name: "Turkmenistan",
+                    value: 70.6
+                },
+                {
+                    name: "Oman",
+                    value: 74.3
+                },
+                {
+                    name: "Qatar",
+                    value: 88.8
+                },
+                {
+                    name: "Philippines",
+                    value: 96.9
+                },
+                {
+                    name: "Kuwait",
+                    value: 98.6
+                },
+                {
+                    name: "Uzbekistan",
+                    value: 122.6
+                },
+                {
+                    name: "Iraq",
+                    value: 139.9
+                },
+                {
+                    name: "Pakistan",
+                    value: 158.1
+                },
+                {
+                    name: "Vietnam",
+                    value: 190.2
+                },
+                {
+                    name: "United Arab Emirates",
+                    value: 201.1
+                },
+                {
+                    name: "Malaysia",
+                    value: 227.5
+                },
+                {
+                    name: "Kazakhstan",
+                    value: 236.2
+                },
+                {
+                    name: "Thailand",
+                    value: 272
+                },
+                {
+                    name: "Taiwan",
+                    value: 276.7
+                },
+                {
+                    name: "Indonesia",
+                    value: 453
+                },
+                {
+                    name: "Saudi Arabia",
+                    value: 494.8
+                },
+                {
+                    name: "Japan",
+                    value: 1278.9
+                },
+                {
+                    name: "China",
+                    value: 10540.8
+                },
+                {
+                    name: "India",
+                    value: 2341.9
+                },
+                {
+                    name: "Russia",
+                    value: 1766.4
+                },
+                {
+                    name: "Iran",
+                    value: 618.2
+                },
+                {
+                    name: "Korea",
+                    value: 610.1
+                }]
+            }]
+        });        
+    },
+    chart33: function() {
+        Highcharts.chart('chart33', {
+            chart: {
+                type: 'packedbubble',
+                height: '100%'
+            },
+            title: {
+                text: 'Carbon emissions around the world (2014)'
+            },
+            tooltip: {
+                useHTML: true,
+                pointFormat: '<b>{point.name}:</b> {point.y}m CO<sub>2</sub>'
+            },
+            plotOptions: {
+                packedbubble: {
+                    minSize: '20%',
+                    maxSize: '100%',
+                    zMin: 0,
+                    zMax: 1000,
+                    layoutAlgorithm: {
+                        gravitationalConstant: 0.05,
+                        splitSeries: true,
+                        seriesInteraction: false,
+                        dragBetweenSeries: true,
+                        parentNodeLimit: true
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}',
+                        filter: {
+                            property: 'y',
+                            operator: '>',
+                            value: 250
+                        },
+                        style: {
+                            color: 'black',
+                            textOutline: 'none',
+                            fontWeight: 'normal'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Europe',
+                data: [{
+                    name: 'Germany',
+                    value: 767.1
+                }, {
+                    name: 'Croatia',
+                    value: 20.7
+                },
+                {
+                    name: "Belgium",
+                    value: 97.2
+                },
+                {
+                    name: "Czech Republic",
+                    value: 111.7
+                },
+                {
+                    name: "Netherlands",
+                    value: 158.1
+                },
+                {
+                    name: "Spain",
+                    value: 241.6
+                },
+                {
+                    name: "Ukraine",
+                    value: 249.1
+                },
+                {
+                    name: "Poland",
+                    value: 298.1
+                },
+                {
+                    name: "France",
+                    value: 323.7
+                },
+                {
+                    name: "Romania",
+                    value: 78.3
+                },
+                {
+                    name: "United Kingdom",
+                    value: 415.4
+                }, {
+                    name: "Turkey",
+                    value: 353.2
+                }, {
+                    name: "Italy",
+                    value: 337.6
+                },
+                {
+                    name: "Greece",
+                    value: 71.1
+                },
+                {
+                    name: "Austria",
+                    value: 69.8
+                },
+                {
+                    name: "Belarus",
+                    value: 67.7
+                },
+                {
+                    name: "Serbia",
+                    value: 59.3
+                },
+                {
+                    name: "Finland",
+                    value: 54.8
+                },
+                {
+                    name: "Bulgaria",
+                    value: 51.2
+                },
+                {
+                    name: "Portugal",
+                    value: 48.3
+                },
+                {
+                    name: "Norway",
+                    value: 44.4
+                },
+                {
+                    name: "Sweden",
+                    value: 44.3
+                },
+                {
+                    name: "Hungary",
+                    value: 43.7
+                },
+                {
+                    name: "Switzerland",
+                    value: 40.2
+                },
+                {
+                    name: "Denmark",
+                    value: 40
+                },
+                {
+                    name: "Slovakia",
+                    value: 34.7
+                },
+                {
+                    name: "Ireland",
+                    value: 34.6
+                },
+                {
+                    name: "Croatia",
+                    value: 20.7
+                },
+                {
+                    name: "Estonia",
+                    value: 19.4
+                },
+                {
+                    name: "Slovenia",
+                    value: 16.7
+                },
+                {
+                    name: "Lithuania",
+                    value: 12.3
+                },
+                {
+                    name: "Luxembourg",
+                    value: 10.4
+                },
+                {
+                    name: "Macedonia",
+                    value: 9.5
+                },
+                {
+                    name: "Moldova",
+                    value: 7.8
+                },
+                {
+                    name: "Latvia",
+                    value: 7.5
+                },
+                {
+                    name: "Cyprus",
+                    value: 7.2
+                }]
+            }, {
+                name: 'Africa',
+                data: [{
+                    name: "Senegal",
+                    value: 8.2
+                },
+                {
+                    name: "Cameroon",
+                    value: 9.2
+                },
+                {
+                    name: "Zimbabwe",
+                    value: 13.1
+                },
+                {
+                    name: "Ghana",
+                    value: 14.1
+                },
+                {
+                    name: "Kenya",
+                    value: 14.1
+                },
+                {
+                    name: "Sudan",
+                    value: 17.3
+                },
+                {
+                    name: "Tunisia",
+                    value: 24.3
+                },
+                {
+                    name: "Angola",
+                    value: 25
+                },
+                {
+                    name: "Libya",
+                    value: 50.6
+                },
+                {
+                    name: "Ivory Coast",
+                    value: 7.3
+                },
+                {
+                    name: "Morocco",
+                    value: 60.7
+                },
+                {
+                    name: "Ethiopia",
+                    value: 8.9
+                },
+                {
+                    name: "United Republic of Tanzania",
+                    value: 9.1
+                },
+                {
+                    name: "Nigeria",
+                    value: 93.9
+                },
+                {
+                    name: "South Africa",
+                    value: 392.7
+                }, {
+                    name: "Egypt",
+                    value: 225.1
+                }, {
+                    name: "Algeria",
+                    value: 141.5
+                }]
+            }, {
+                name: 'Oceania',
+                data: [{
+                    name: "Australia",
+                    value: 409.4
+                },
+                {
+                    name: "New Zealand",
+                    value: 34.1
+                },
+                {
+                    name: "Papua New Guinea",
+                    value: 7.1
+                }]
+            }, {
+                name: 'North America',
+                data: [{
+                    name: "Costa Rica",
+                    value: 7.6
+                },
+                {
+                    name: "Honduras",
+                    value: 8.4
+                },
+                {
+                    name: "Jamaica",
+                    value: 8.3
+                },
+                {
+                    name: "Panama",
+                    value: 10.2
+                },
+                {
+                    name: "Guatemala",
+                    value: 12
+                },
+                {
+                    name: "Dominican Republic",
+                    value: 23.4
+                },
+                {
+                    name: "Cuba",
+                    value: 30.2
+                },
+                {
+                    name: "USA",
+                    value: 5334.5
+                }, {
+                    name: "Canada",
+                    value: 566
+                }, {
+                    name: "Mexico",
+                    value: 456.3
+                }]
+            }, {
+                name: 'South America',
+                data: [{
+                    name: "El Salvador",
+                    value: 7.2
+                },
+                {
+                    name: "Uruguay",
+                    value: 8.1
+                },
+                {
+                    name: "Bolivia",
+                    value: 17.8
+                },
+                {
+                    name: "Trinidad and Tobago",
+                    value: 34
+                },
+                {
+                    name: "Ecuador",
+                    value: 43
+                },
+                {
+                    name: "Chile",
+                    value: 78.6
+                },
+                {
+                    name: "Peru",
+                    value: 52
+                },
+                {
+                    name: "Colombia",
+                    value: 74.1
+                },
+                {
+                    name: "Brazil",
+                    value: 501.1
+                }, {
+                    name: "Argentina",
+                    value: 199
+                },
+                {
+                    name: "Venezuela",
+                    value: 195.2
+                }]
+            }, {
+                name: 'Asia',
+                data: [{
+                    name: "Nepal",
+                    value: 6.5
+                },
+                {
+                    name: "Georgia",
+                    value: 6.5
+                },
+                {
+                    name: "Brunei Darussalam",
+                    value: 7.4
+                },
+                {
+                    name: "Kyrgyzstan",
+                    value: 7.4
+                },
+                {
+                    name: "Afghanistan",
+                    value: 7.9
+                },
+                {
+                    name: "Myanmar",
+                    value: 9.1
+                },
+                {
+                    name: "Mongolia",
+                    value: 14.7
+                },
+                {
+                    name: "Sri Lanka",
+                    value: 16.6
+                },
+                {
+                    name: "Bahrain",
+                    value: 20.5
+                },
+                {
+                    name: "Yemen",
+                    value: 22.6
+                },
+                {
+                    name: "Jordan",
+                    value: 22.3
+                },
+                {
+                    name: "Lebanon",
+                    value: 21.1
+                },
+                {
+                    name: "Azerbaijan",
+                    value: 31.7
+                },
+                {
+                    name: "Singapore",
+                    value: 47.8
+                },
+                {
+                    name: "Hong Kong",
+                    value: 49.9
+                },
+                {
+                    name: "Syria",
+                    value: 52.7
+                },
+                {
+                    name: "DPR Korea",
+                    value: 59.9
+                },
+                {
+                    name: "Israel",
+                    value: 64.8
+                },
+                {
+                    name: "Turkmenistan",
+                    value: 70.6
+                },
+                {
+                    name: "Oman",
+                    value: 74.3
+                },
+                {
+                    name: "Qatar",
+                    value: 88.8
+                },
+                {
+                    name: "Philippines",
+                    value: 96.9
+                },
+                {
+                    name: "Kuwait",
+                    value: 98.6
+                },
+                {
+                    name: "Uzbekistan",
+                    value: 122.6
+                },
+                {
+                    name: "Iraq",
+                    value: 139.9
+                },
+                {
+                    name: "Pakistan",
+                    value: 158.1
+                },
+                {
+                    name: "Vietnam",
+                    value: 190.2
+                },
+                {
+                    name: "United Arab Emirates",
+                    value: 201.1
+                },
+                {
+                    name: "Malaysia",
+                    value: 227.5
+                },
+                {
+                    name: "Kazakhstan",
+                    value: 236.2
+                },
+                {
+                    name: "Thailand",
+                    value: 272
+                },
+                {
+                    name: "Taiwan",
+                    value: 276.7
+                },
+                {
+                    name: "Indonesia",
+                    value: 453
+                },
+                {
+                    name: "Saudi Arabia",
+                    value: 494.8
+                },
+                {
+                    name: "Japan",
+                    value: 1278.9
+                },
+                {
+                    name: "China",
+                    value: 10540.8
+                },
+                {
+                    name: "India",
+                    value: 2341.9
+                },
+                {
+                    name: "Russia",
+                    value: 1766.4
+                },
+                {
+                    name: "Iran",
+                    value: 618.2
+                },
+                {
+                    name: "Korea",
+                    value: 610.1
+                }]
+            }]
+        });        
+    },
+    chart34: function() {
+        Highcharts.chart('chart34', {
+            chart: {
+                type: 'spline'
+            },
+        
+            accessibility: {
+                description: 'Most commonly used desktop screen readers from January 2009 to July 2015 as reported in the Webaim Survey. JAWS remains the most used screen reader, but is steadily declining. ZoomText and WindowEyes are both displaying large growth from 2014 to 2015.'
+            },
+        
+            legend: {
+                symbolWidth: 40
+            },
+        
+            title: {
+                text: 'Desktop screen readers from 2009 to 2015'
+            },
+        
+            subtitle: {
+                text: 'Click on point to visit official website'
+            },
+        
+            yAxis: {
+                title: {
+                    text: 'Percentage usage'
+                }
+            },
+        
+            xAxis: {
+                title: {
+                    text: 'Time'
+                },
+                accessibility: {
+                    description: 'Time from January 2009 to July 2015'
+                },
+                categories: ['January 2009', 'December 2010', 'May 2012', 'January 2014', 'July 2015']
+            },
+        
+            tooltip: {
+                split: true
+            },
+        
+            plotOptions: {
+                series: {
+                    point: {
+                        events: {
+                            click: function () {
+                                window.location.href = this.series.options.website;
+                            }
+                        }
+                    },
+                    cursor: 'pointer'
+                }
+            },
+        
+            series: [
+                {
+                    name: 'JAWS',
+                    data: [74, 69.6, 63.7, 63.9, 43.7],
+                    website: 'https://www.freedomscientific.com/Products/Blindness/JAWS'
+                }, {
+                    name: 'NVDA',
+                    data: [8, 34.8, 43.0, 51.2, 41.4],
+                    website: 'https://www.nvaccess.org',
+                    dashStyle: 'Dot'
+                }, {
+                    name: 'VoiceOver',
+                    data: [6, 20.2, 30.7, 36.8, 30.9],
+                    website: 'http://www.apple.com/accessibility/osx/voiceover',
+                    dashStyle: 'ShortDot',
+                    color: Highcharts.getOptions().colors[7]
+                }, {
+                    name: 'Window-Eyes',
+                    data: [23, 19.0, 20.7, 13.9, 29.6],
+                    website: 'http://www.gwmicro.com/window-eyes',
+                    dashStyle: 'Dash',
+                    color: Highcharts.getOptions().colors[0]
+                }, {
+                    name: 'ZoomText',
+                    data: [0, 6.1, 6.8, 5.3, 27.5],
+                    website: 'http://www.zoomtext.com/products/zoomtext-magnifierreader',
+                    dashStyle: 'ShortDashDot',
+                    color: Highcharts.getOptions().colors[8]
+                }, {
+                    name: 'System Access To Go',
+                    data: [0, 16.2, 22.1, 26.2, 6.9],
+                    website: 'https://www.satogo.com',
+                    dashStyle: 'ShortDash',
+                    color: Highcharts.getOptions().colors[1]
+                }, {
+                    name: 'ChromeVox',
+                    data: [0, 0, 2.8, 4.8, 2.8],
+                    website: 'http://www.chromevox.com',
+                    dashStyle: 'DotDash',
+                    color: Highcharts.getOptions().colors[4]
+                }, {
+                    name: 'Other',
+                    data: [0, 7.4, 5.9, 9.3, 6.5],
+                    website: 'http://www.disabled-world.com/assistivedevices/computer/screen-readers.php',
+                    dashStyle: 'LongDash',
+                    color: Highcharts.getOptions().colors[7]
+                }
+            ],
+        
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            itemWidth: 150
+                        }
+                    }
+                }]
+            }
+        });        
+    },
+    chart35: function() {
+        Highcharts.chart('chart35', {
+            chart: {
+                type: 'pie'
+            },
+        
+            accessibility: {
+                description: 'Most commonly used desktop screen readers in July 2015 as reported in the Webaim Survey. Shown as percentage of respondents. JAWS is by far the most used screen reader, with 30% of respondents using it. ZoomText and Window-Eyes follow, each with around 20% usage.'
+            },
+        
+            title: {
+                text: 'Desktop screen readers'
+            },
+        
+            subtitle: {
+                text: 'Click on point to visit official website'
+            },
+        
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        connectorColor: Highcharts.getOptions().colors[0],
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    },
+                    point: {
+                        events: {
+                            click: function () {
+                                window.location.href = this.website;
+                            }
+                        }
+                    },
+                    cursor: 'pointer'
+                }
+            },
+        
+            series: [{
+                name: 'Percentage usage',
+                borderColor: Highcharts.getOptions().colors[0],
+                data: [{
+                    name: 'JAWS',
+                    y: 30.2,
+                    website: 'https://www.freedomscientific.com/Products/Blindness/JAWS',
+                    color: 'url(#highcharts-default-pattern-0)',
+                    accessibility: {
+                        description: 'This is the most used desktop screen reader'
+                    }
+                }, {
+                    name: 'ZoomText',
+                    y: 22.2,
+                    website: 'http://www.zoomtext.com/products/zoomtext-magnifierreader',
+                    color: 'url(#highcharts-default-pattern-1)'
+                }, {
+                    name: 'Window-Eyes',
+                    y: 20.7,
+                    website: 'http://www.gwmicro.com/window-eyes',
+                    color: 'url(#highcharts-default-pattern-2)'
+                }, {
+                    name: 'NVDA',
+                    y: 14.6,
+                    website: 'https://www.nvaccess.org',
+                    color: 'url(#highcharts-default-pattern-4)'
+                }, {
+                    name: 'VoiceOver',
+                    y: 7.6,
+                    website: 'http://www.apple.com/accessibility/osx/voiceover',
+                    color: 'url(#highcharts-default-pattern-3)'
+                }, {
+                    name: 'System Access To Go',
+                    y: 1.5,
+                    website: 'https://www.satogo.com',
+                    color: 'url(#highcharts-default-pattern-7)'
+                }, {
+                    name: 'ChromeVox',
+                    y: 0.3,
+                    website: 'http://www.chromevox.com',
+                    color: 'url(#highcharts-default-pattern-6)'
+                }, {
+                    name: 'Other',
+                    y: 2.9,
+                    website: 'http://www.disabled-world.com/assistivedevices/computer/screen-readers.php',
+                    color: 'url(#highcharts-default-pattern-5)'
+                }]
+            }]
+        });        
+    },
+    chart36: function() {
+        // Define custom series type for displaying low/med/high values using boxplot as a base
+        Highcharts.seriesType('lowmedhigh', 'boxplot', {
+            keys: ['low', 'median', 'high']
+        }, {
+            // Change point shape to a line with three crossing lines for low/median/high
+            // Stroke width is hardcoded to 1 for simplicity
+            drawPoints: function () {
+                var series = this;
+                Highcharts.each(this.points, function (point) {
+                    var graphic = point.graphic,
+                        verb = graphic ? 'animate' : 'attr',
+                        shapeArgs = point.shapeArgs,
+                        width = shapeArgs.width,
+                        left = Math.floor(shapeArgs.x) + 0.5,
+                        right = left + width,
+                        crispX = left + Math.round(width / 2) + 0.5,
+                        highPlot = Math.floor(point.highPlot) + 0.5,
+                        medianPlot = Math.floor(point.medianPlot) + 0.5,
+                        lowPlot = Math.floor(point.lowPlot) + 0.5 - (point.low === 0 ? 1 : 0); // Sneakily draw low marker even if 0
+
+                    if (!graphic) {
+                        point.graphic = graphic = series.chart.renderer.path('point').add(series.group);
+                    }
+
+                    graphic.attr({
+                        stroke: point.color || series.color,
+                        "stroke-width": 1
+                    });
+
+                    graphic[verb]({
+                        d: [
+                            'M', left, highPlot,
+                            'H', right,
+                            'M', left, medianPlot,
+                            'H', right,
+                            'M', left, lowPlot,
+                            'H', right,
+                            'M', crispX, highPlot,
+                            'V', lowPlot
+                        ]
+                    });
+                });
+            }
+        });
+
+        // Create chart
+        var chart = Highcharts.chart('chart36', {
+            chart: {
+                type: 'lowmedhigh'
+            },
+            accessibility: {
+                keyboardNavigation: {
+                    skipNullPoints: true
+                },
+                pointDescriptionFormatter: function (point) {
+                    return point.category + ', low ' + point.low + ', median ' + point.median + ', high ' + point.high;
+                },
+                seriesDescriptionFormatter: function (series) {
+                    return series.name + ', series ' + (series.index + 1) + ' of ' + series.chart.series.length + ' with ' + series.points.length + ' data points.';
+                },
+                typeDescription: 'Low, median, high. Each data point has a low, median and high value, depicted vertically as small ticks.', // Describe the chart type to screen reader users, since this is not a traditional boxplot chart
+                description: 'Chart depicting fictional fruit consumption data, with the minimum, maximum and median values for each month of 2015. Most plums were eaten in spring, and none at all in July or August. Bananas and apples were both consumed in smaller numbers and steadily throughout the year.'
+            },
+            title: {
+                text: 'Daily company fruit consumption 2015'
+            },
+            xAxis: [{
+                crosshair: true,
+                accessibility: {
+                    description: 'Months of the year'
+                },
+                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            }],
+            yAxis: {
+                title: {
+                    text: 'Fruits consumed'
+                },
+                min: 0
+            },
+            plotOptions: {
+                series: {
+                    stickyTracking: true,
+                    whiskerWidth: 5
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}:<br/>Low: <b>{point.low}</b><br/>Median: <b>{point.median}</b><br/>High: <b>{point.high}</b><br/>'
+            },
+            series: [{
+                name: 'Plums',
+                data: [
+                    [0, 8, 19],
+                    [1, 11, 23],
+                    [3, 16, 28],
+                    [2, 15, 28],
+                    [1, 15, 27],
+                    [0, 9, 21],
+                    null,
+                    null,
+                    [1, 6, 19],
+                    [2, 8, 21],
+                    [2, 9, 22],
+                    [1, 11, 19]
+                ]
+            }, {
+                name: 'Bananas',
+                data: [
+                    [0, 3, 6],
+                    [1, 2, 4],
+                    [0, 2, 5],
+                    [2, 2, 5],
+                    [1, 3, 6],
+                    [0, 1, 3],
+                    [1, 1, 2],
+                    [0, 1, 3],
+                    [1, 1, 3],
+                    [0, 2, 4],
+                    [1, 2, 5],
+                    [1, 3, 5]
+                ]
+            }, {
+                name: 'Apples',
+                data: [
+                    [1, 4, 6],
+                    [2, 4, 5],
+                    [1, 3, 6],
+                    [2, 3, 6],
+                    [1, 3, 4],
+                    [0, 2, 4],
+                    [0, 1, 2],
+                    [0, 1, 2],
+                    [0, 1, 2],
+                    [0, 2, 4],
+                    [1, 2, 4],
+                    [1, 3, 4]
+                ]
+            }]
+        });
+
+        // Remove click events on container to avoid having "clickable" announced by AT
+        // These events are needed for custom click events, drag to zoom, and navigator
+        // support.
+        chart.container.onmousedown = null;
+        chart.container.onclick = null;
+    },
+    chart37: function() {
+        // Set up the chart
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart37',
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 15,
+                    beta: 15,
+                    depth: 50,
+                    viewDistance: 25
+                }
+            },
+            title: {
+                text: 'Chart rotation demo'
+            },
+            subtitle: {
+                text: 'Test options by dragging the sliders below'
+            },
+            plotOptions: {
+                column: {
+                    depth: 25
+                }
+            },
+            series: [{
+                data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            }]
+        });
+
+        function showValues() {
+            $('#alpha-value').html(chart.options.chart.options3d.alpha);
+            $('#beta-value').html(chart.options.chart.options3d.beta);
+            $('#depth-value').html(chart.options.chart.options3d.depth);
+        }
+
+        // Activate the sliders
+        $('#sliders input').on('input change', function () {
+            chart.options.chart.options3d[this.id] = parseFloat(this.value);
+            showValues();
+            chart.redraw(false);
+        });
+
+        showValues();
+    },
+    chart38: function() {
+        Highcharts.chart('chart38', {
+            chart: {
+                type: 'cylinder',
+                options3d: {
+                    enabled: true,
+                    alpha: 15,
+                    beta: 15,
+                    depth: 50,
+                    viewDistance: 25
+                }
+            },
+            title: {
+                text: 'Highcharts Cylinder Chart'
+            },
+            plotOptions: {
+                series: {
+                    depth: 25,
+                    colorByPoint: true
+                }
+            },
+            series: [{
+                data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                name: 'Cylinders',
+                showInLegend: false
+            }]
+        });
+    },
+    chart39: function() {
+        // Set up the chart
+        Highcharts.chart('chart39', {
+            chart: {
+                type: 'funnel3d',
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    depth: 50,
+                    viewDistance: 50
+                }
+            },
+            title: {
+                text: 'Highcharts Funnel3D Chart'
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> ({point.y:,.0f})',
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                        allowOverlap: true,
+                        y: 10
+                    },
+                    neckWidth: '30%',
+                    neckHeight: '25%',
+                    width: '80%',
+                    height: '80%'
+                }
+            },
+            series: [{
+                name: 'Unique users',
+                data: [
+                    ['Website visits', 15654],
+                    ['Downloads', 4064],
+                    ['Requested price list', 1987],
+                    ['Invoice sent', 976],
+                    ['Finalized', 846]
+                ]
+            }]
+        });
+    },
+    chart40: function() {
+        Highcharts.chart('chart40', {
+            chart: {
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 15,
+                    beta: 15,
+                    viewDistance: 25,
+                    depth: 40
+                }
+            },
+        
+            title: {
+                text: 'Total fruit consumption, grouped by gender'
+            },
+        
+            xAxis: {
+                categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
+                labels: {
+                    skew3d: true,
+                    style: {
+                        fontSize: '16px'
+                    }
+                }
+            },
+        
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'Number of fruits',
+                    skew3d: true
+                }
+            },
+        
+            tooltip: {
+                headerFormat: '<b>{point.key}</b><br>',
+                pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+            },
+        
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    depth: 40
+                }
+            },
+        
+            series: [{
+                name: 'John',
+                data: [5, 3, 4, 7, 2],
+                stack: 'male'
+            }, {
+                name: 'Joe',
+                data: [3, 4, 4, 2, 5],
+                stack: 'male'
+            }, {
+                name: 'Jane',
+                data: [2, 5, 6, 2, 1],
+                stack: 'female'
+            }, {
+                name: 'Janet',
+                data: [3, 0, 4, 4, 3],
+                stack: 'female'
+            }]
+        });
+    },
+    chart41: function() {
+        Highcharts.chart('chart41', {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45
+                }
+            },
+            title: {
+                text: 'Contents of Highsoft\'s weekly fruit delivery'
+            },
+            subtitle: {
+                text: '3D donut in Highcharts'
+            },
+            plotOptions: {
+                pie: {
+                    innerSize: 100,
+                    depth: 45
+                }
+            },
+            series: [{
+                name: 'Delivered amount',
+                data: [
+                    ['Bananas', 8],
+                    ['Kiwi', 3],
+                    ['Mixed nuts', 1],
+                    ['Oranges', 6],
+                    ['Apples', 8],
+                    ['Pears', 4],
+                    ['Clementines', 4],
+                    ['Reddish (bag)', 1],
+                    ['Grapes (bunch)', 1]
+                ]
+            }]
+        });
+    },
+    chart42: function() {
+        // Give the points a 3D feel by adding a radial gradient
+        Highcharts.setOptions({
+            colors: Highcharts.getOptions().colors.map(function (color) {
+                return {
+                    radialGradient: {
+                        cx: 0.4,
+                        cy: 0.3,
+                        r: 0.5
+                    },
+                    stops: [
+                        [0, color],
+                        [1, Highcharts.Color(color).brighten(-0.2).get('rgb')]
+                    ]
+                };
+            })
+        });
+
+        // Set up the chart
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart42',
+                margin: 100,
+                type: 'scatter3d',
+                animation: false,
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 30,
+                    depth: 250,
+                    viewDistance: 5,
+                    fitToPlot: false,
+                    frame: {
+                        bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
+                        back: { size: 1, color: 'rgba(0,0,0,0.04)' },
+                        side: { size: 1, color: 'rgba(0,0,0,0.06)' }
+                    }
+                }
+            },
+            title: {
+                text: 'Draggable box'
+            },
+            subtitle: {
+                text: 'Click and drag the plot area to rotate in space'
+            },
+            plotOptions: {
+                scatter: {
+                    width: 10,
+                    height: 10,
+                    depth: 10
+                }
+            },
+            yAxis: {
+                min: 0,
+                max: 10,
+                title: null
+            },
+            xAxis: {
+                min: 0,
+                max: 10,
+                gridLineWidth: 1
+            },
+            zAxis: {
+                min: 0,
+                max: 10,
+                showFirstLabel: false
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Reading',
+                colorByPoint: true,
+                data: [
+                    [1, 6, 5], [8, 7, 9], [1, 3, 4], [4, 6, 8], [5, 7, 7], [6, 9, 6],
+                    [7, 0, 5], [2, 3, 3], [3, 9, 8], [3, 6, 5], [4, 9, 4], [2, 3, 3],
+                    [6, 9, 9], [0, 7, 0], [7, 7, 9], [7, 2, 9], [0, 6, 2], [4, 6, 7],
+                    [3, 7, 7], [0, 1, 7], [2, 8, 6], [2, 3, 7], [6, 4, 8], [3, 5, 9],
+                    [7, 9, 5], [3, 1, 7], [4, 4, 2], [3, 6, 2], [3, 1, 6], [6, 8, 5],
+                    [6, 6, 7], [4, 1, 1], [7, 2, 7], [7, 7, 0], [8, 8, 9], [9, 4, 1],
+                    [8, 3, 4], [9, 8, 9], [3, 5, 3], [0, 2, 4], [6, 0, 2], [2, 1, 3],
+                    [5, 8, 9], [2, 1, 1], [9, 7, 6], [3, 0, 2], [9, 9, 0], [3, 4, 8],
+                    [2, 6, 1], [8, 9, 2], [7, 6, 5], [6, 3, 1], [9, 3, 1], [8, 9, 3],
+                    [9, 1, 0], [3, 8, 7], [8, 0, 0], [4, 9, 7], [8, 6, 2], [4, 3, 0],
+                    [2, 3, 5], [9, 1, 4], [1, 1, 4], [6, 0, 2], [6, 1, 6], [3, 8, 8],
+                    [8, 8, 7], [5, 5, 0], [3, 9, 6], [5, 4, 3], [6, 8, 3], [0, 1, 5],
+                    [6, 7, 3], [8, 3, 2], [3, 8, 3], [2, 1, 6], [4, 6, 7], [8, 9, 9],
+                    [5, 4, 2], [6, 1, 3], [6, 9, 5], [4, 8, 2], [9, 7, 4], [5, 4, 2],
+                    [9, 6, 1], [2, 7, 3], [4, 5, 4], [6, 8, 1], [3, 4, 0], [2, 2, 6],
+                    [5, 1, 2], [9, 9, 7], [6, 9, 9], [8, 4, 3], [4, 1, 7], [6, 2, 5],
+                    [0, 4, 9], [3, 5, 9], [6, 9, 1], [1, 9, 2]]
+            }]
+        });
+
+
+        // Add mouse and touch events for rotation
+        (function (H) {
+            function dragStart(eStart) {
+                eStart = chart.pointer.normalize(eStart);
+
+                var posX = eStart.chartX,
+                    posY = eStart.chartY,
+                    alpha = chart.options.chart.options3d.alpha,
+                    beta = chart.options.chart.options3d.beta,
+                    sensitivity = 5,  // lower is more sensitive
+                    handlers = [];
+
+                function drag(e) {
+                    // Get e.chartX and e.chartY
+                    e = chart.pointer.normalize(e);
+
+                    chart.update({
+                        chart: {
+                            options3d: {
+                                alpha: alpha + (e.chartY - posY) / sensitivity,
+                                beta: beta + (posX - e.chartX) / sensitivity
+                            }
+                        }
+                    }, undefined, undefined, false);
+                }
+
+                function unbindAll() {
+                    handlers.forEach(function (unbind) {
+                        if (unbind) {
+                            unbind();
+                        }
+                    });
+                    handlers.length = 0;
+                }
+
+                handlers.push(H.addEvent(document, 'mousemove', drag));
+                handlers.push(H.addEvent(document, 'touchmove', drag));
+
+
+                handlers.push(H.addEvent(document, 'mouseup', unbindAll));
+                handlers.push(H.addEvent(document, 'touchend', unbindAll));
+            }
+            H.addEvent(chart.container, 'mousedown', dragStart);
+            H.addEvent(chart.container, 'touchstart', dragStart);
+        }(Highcharts));
+    },
+    chart43: function() {
+        Highcharts.chart('chart43', {
+
+            chart: {
+                type: 'gauge',
+                plotBackgroundColor: null,
+                plotBackgroundImage: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+        
+            title: {
+                text: 'Speedometer'
+            },
+        
+            pane: {
+                startAngle: -150,
+                endAngle: 150,
+                background: [{
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+                            [0, '#FFF'],
+                            [1, '#333']
+                        ]
+                    },
+                    borderWidth: 0,
+                    outerRadius: '109%'
+                }, {
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+                            [0, '#333'],
+                            [1, '#FFF']
+                        ]
+                    },
+                    borderWidth: 1,
+                    outerRadius: '107%'
+                }, {
+                    // default background
+                }, {
+                    backgroundColor: '#DDD',
+                    borderWidth: 0,
+                    outerRadius: '105%',
+                    innerRadius: '103%'
+                }]
+            },
+        
+            // the value axis
+            yAxis: {
+                min: 0,
+                max: 200,
+        
+                minorTickInterval: 'auto',
+                minorTickWidth: 1,
+                minorTickLength: 10,
+                minorTickPosition: 'inside',
+                minorTickColor: '#666',
+        
+                tickPixelInterval: 30,
+                tickWidth: 2,
+                tickPosition: 'inside',
+                tickLength: 10,
+                tickColor: '#666',
+                labels: {
+                    step: 2,
+                    rotation: 'auto'
+                },
+                title: {
+                    text: 'km/h'
+                },
+                plotBands: [{
+                    from: 0,
+                    to: 120,
+                    color: '#55BF3B' // green
+                }, {
+                    from: 120,
+                    to: 160,
+                    color: '#DDDF0D' // yellow
+                }, {
+                    from: 160,
+                    to: 200,
+                    color: '#DF5353' // red
+                }]
+            },
+        
+            series: [{
+                name: 'Speed',
+                data: [80],
+                tooltip: {
+                    valueSuffix: ' km/h'
+                }
+            }]
+        
+        },
+        // Add some life
+        function (chart) {
+            if (!chart.renderer.forExport) {
+                setInterval(function () {
+                    var point = chart.series[0].points[0],
+                        newVal,
+                        inc = Math.round((Math.random() - 0.5) * 20);
+        
+                    newVal = point.y + inc;
+                    if (newVal < 0 || newVal > 200) {
+                        newVal = point.y - inc;
+                    }
+        
+                    point.update(newVal);
+        
+                }, 3000);
+            }
+        });
+    },
+    chart44: function() {
+        var gaugeOptions = {
+
+            chart: {
+                type: 'solidgauge'
+            },
+
+            title: null,
+
+            pane: {
+                center: ['50%', '85%'],
+                size: '140%',
+                startAngle: -90,
+                endAngle: 90,
+                background: {
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                    innerRadius: '60%',
+                    outerRadius: '100%',
+                    shape: 'arc'
+                }
+            },
+
+            tooltip: {
+                enabled: false
+            },
+
+            // the value axis
+            yAxis: {
+                stops: [
+                    [0.1, '#55BF3B'], // green
+                    [0.5, '#DDDF0D'], // yellow
+                    [0.9, '#DF5353'] // red
+                ],
+                lineWidth: 0,
+                minorTickInterval: null,
+                tickAmount: 2,
+                title: {
+                    y: -70
+                },
+                labels: {
+                    y: 16
+                }
+            },
+
+            plotOptions: {
+                solidgauge: {
+                    dataLabels: {
+                        y: 5,
+                        borderWidth: 0,
+                        useHTML: true
+                    }
+                }
+            }
+        };
+
+        // The speed gauge
+        var chartSpeed = Highcharts.chart('chart44', Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 200,
+                title: {
+                    text: 'Speed'
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Speed',
+                data: [80],
+                dataLabels: {
+                    format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                        ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                        '<span style="font-size:12px;color:silver">km/h</span></div>'
+                },
+                tooltip: {
+                    valueSuffix: ' km/h'
+                }
+            }]
+
+        }));
+
+        // Bring life to the dials
+        setInterval(function () {
+            // Speed
+            var point,
+                newVal,
+                inc;
+
+            if (chartSpeed) {
+                point = chartSpeed.series[0].points[0];
+                inc = Math.round((Math.random() - 0.5) * 100);
+                newVal = point.y + inc;
+
+                if (newVal < 0 || newVal > 200) {
+                    newVal = point.y - inc;
+                }
+
+                point.update(newVal);
+            }
+        }, 2000);
+    },
+    chart45: function() {
+        Highcharts.setOptions({
+            chart: {
+                inverted: true,
+                marginLeft: 135,
+                type: 'bullet'
+            },
+            title: {
+                text: null
+            },
+            legend: {
+                enabled: false
+            },
+            yAxis: {
+                gridLineWidth: 0
+            },
+            plotOptions: {
+                series: {
+                    pointPadding: 0.25,
+                    borderWidth: 0,
+                    color: '#000',
+                    targetOptions: {
+                        width: '200%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            }
+        });
+        
+        Highcharts.chart('chart45', {
+            chart: {
+                marginTop: 40
+            },
+            title: {
+                text: '2017 YTD'
+            },
+            xAxis: {
+                categories: ['<span class="hc-cat-title">Revenue</span><br/>U.S. $ (1,000s)']
+            },
+            yAxis: {
+                plotBands: [{
+                    from: 0,
+                    to: 150,
+                    color: '#666'
+                }, {
+                    from: 150,
+                    to: 225,
+                    color: '#999'
+                }, {
+                    from: 225,
+                    to: 9e9,
+                    color: '#bbb'
+                }],
+                title: null
+            },
+            series: [{
+                data: [{
+                    y: 275,
+                    target: 250
+                }]
+            }],
+            tooltip: {
+                pointFormat: '<b>{point.y}</b> (with target at {point.target})'
+            }
+        });
+    },
+    chart46: function() {
+        Highcharts.chart('chart46', {
+
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 80,
+                plotBorderWidth: 1
+            },
+        
+        
+            title: {
+                text: 'Sales per employee per weekday'
+            },
+        
+            xAxis: {
+                categories: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura']
+            },
+        
+            yAxis: {
+                categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                title: null
+            },
+        
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+        
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 280
+            },
+        
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
+                        this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+            },
+        
+            series: [{
+                name: 'Sales per employee',
+                borderWidth: 1,
+                data: [[0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 67], [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117], [1, 4, 48], [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19], [3, 4, 16], [4, 0, 38], [4, 1, 5], [4, 2, 8], [4, 3, 117], [4, 4, 115], [5, 0, 88], [5, 1, 32], [5, 2, 12], [5, 3, 6], [5, 4, 120], [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 98], [6, 4, 96], [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84], [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91]],
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000'
+                }
+            }]
+        
+        });
+    },
+    chart47: function() {
+        Highcharts.chart('chart47', {
+            colorAxis: {
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+            series: [{
+                type: 'treemap',
+                layoutAlgorithm: 'squarified',
+                data: [{
+                    name: 'A',
+                    value: 6,
+                    colorValue: 1
+                }, {
+                    name: 'B',
+                    value: 6,
+                    colorValue: 2
+                }, {
+                    name: 'C',
+                    value: 4,
+                    colorValue: 3
+                }, {
+                    name: 'D',
+                    value: 3,
+                    colorValue: 4
+                }, {
+                    name: 'E',
+                    value: 2,
+                    colorValue: 5
+                }, {
+                    name: 'F',
+                    value: 2,
+                    colorValue: 6
+                }, {
+                    name: 'G',
+                    value: 1,
+                    colorValue: 7
+                }]
+            }],
+            title: {
+                text: 'Highcharts Treemap'
+            }
+        });
+    },
+    chart48: function() {
+        Highcharts.chart('chart48', {
+            series: [{
+                type: "treemap",
+                layoutAlgorithm: 'stripes',
+                alternateStartingDirection: true,
+                levels: [{
+                    level: 1,
+                    layoutAlgorithm: 'sliceAndDice',
+                    dataLabels: {
+                        enabled: true,
+                        align: 'left',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '15px',
+                            fontWeight: 'bold'
+                        }
+                    }
+                }],
+                data: [{
+                    id: 'A',
+                    name: 'Apples',
+                    color: "#EC2500"
+                }, {
+                    id: 'B',
+                    name: 'Bananas',
+                    color: "#ECE100"
+                }, {
+                    id: 'O',
+                    name: 'Oranges',
+                    color: '#EC9800'
+                }, {
+                    name: 'Anne',
+                    parent: 'A',
+                    value: 5
+                }, {
+                    name: 'Rick',
+                    parent: 'A',
+                    value: 3
+                }, {
+                    name: 'Peter',
+                    parent: 'A',
+                    value: 4
+                }, {
+                    name: 'Anne',
+                    parent: 'B',
+                    value: 4
+                }, {
+                    name: 'Rick',
+                    parent: 'B',
+                    value: 10
+                }, {
+                    name: 'Peter',
+                    parent: 'B',
+                    value: 1
+                }, {
+                    name: 'Anne',
+                    parent: 'O',
+                    value: 1
+                }, {
+                    name: 'Rick',
+                    parent: 'O',
+                    value: 3
+                }, {
+                    name: 'Peter',
+                    parent: 'O',
+                    value: 3
+                }, {
+                    name: 'Susanne',
+                    parent: 'Kiwi',
+                    value: 2,
+                    color: '#9EDE00'
+                }]
+            }],
+            title: {
+                text: 'Fruit consumption'
+            }
+        });
     }
 };
