@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExtensionObject Label="QvOSM_PVM" Description="QvOSM_PVM" PageHeight="10000000">
+	<Dimension Multiple="" Label="Dimensions:" TargetName="Dimension" Initial=""/>
+	<Expression Multiple="" Label="Expressions:" TargetName="Expression" Initial="" />	
+	<Text Label="Zoom : " Expression="3"/>
+	<Text Label="Center : " Expression="127,38"/>
+	<Text Label="Weather : " type="checkbox" Expression="1"/>
+	<Text Label="Vessel : " type="checkbox" Expression="1"/>
+	<Text Label="Typhoon : " type="checkbox" Expression="1"/>
+	<Text Label="Animation : " type="checkbox" Expression="1"/>	
+	
+	
+	<Text Label="태풍 50 색 : " Expression="='rgba(225, 30, 30, 0.6)'" />
+	<Text Label="태풍 34 색 : " Expression="='rgba(30, 30, 225, 0.3)'"/>
+	<Text Label="태풍 예상 경로 선 색 : " Expression="='rgba(225, 50, 50, 0.9)'"/>
+	<Text Label="태풍 예상 경로 선 굵기 : " Expression="='5'"/>
+
+	<Text Label="Typhoon Date label : " type="checkbox" Expression="1"/>	
+	<Text Label="Default Vessel Label: " type="checkbox" Expression="1"/>
+	<Text Label="Default Move Type :" Expression="'fly'"/>
+	<Text Label="Default Map Type :" Expression="'satellite'"/>
+	
+    <Initiate Name="Chart.BgColor.ColorHex" value="#E0FFE0" />
+	<Initiate Name="Caption.Text" value="" />
+</ExtensionObject>

@@ -1,0 +1,168 @@
+﻿PORT_CD,number,icon,windDirNm,windSpeedVal,temperature,minTemperature,maxTemperature,city,country,lon,lat,PORT_NAME,WEATHER_DESC,WEATHER_GRP
+BRMAO,116,01,NE,6,26,22,29,"Manaus, Brazil",BR,-60.00659000,-3.14570000,"Manaus, Brazil",Partly cloudy,Cloud
+BRSSZ,176,10,E,12,19,17,21,"Santos, Brazil",BR,-46.33333333,-23.95000000,"Santos, Brazil",Patchy rain possible,Rain
+CLVAP,143,19,SSE,15,6,5,15,"Valparaiso, Chile",CL,-71.63333333,-33.03333333,Valparaiso,"Mist, Fog",Fog
+CLIQQ,122,01,N,0,16,9,18,"Iquique, Chile",CL,-70.13333333,-20.21666667,Iquique,Overcast,Cloud
+MXZLO,116,01,WNW,9,29,25,30,"Manzanillo, Mexico",MX,-104.30000000,19.05000000,"Manzanillo, Mexico",Partly cloudy,Cloud
+MXLZC,116,01,SW,9,29,24,30,"Lazaro Cardenas, Mexico",MX,-102.18333333,17.95000000,Lazaro Cardenas,Partly cloudy,Cloud
+ARUSH,116,01,NNW,11,4,-6,4,"Ushuaia, Argentina",AR,-68.30000000,-54.80000000,"Ushuaia, Argentina",Partly cloudy,Cloud
+UYMVD,113,21,ENE,10,11,7,15,"Montevideo, Uruguay",UY,-56.18000000,-34.89000000,Montevideo,Clear,Sunny
+CNLYG,119,01,E,5,23,22,26,LIANYUNGANG,CN,119.43333333,34.71666667,Lianyungang,Cloudy,Cloud
+CNSHD,143,19,SE,10,23,20,28,SHIDAO,CN,122.41810000,36.88310000,Shidao,Mist,Fog
+IDJKT,143,19,WSW,15,27,27,34,"Jakarta, Indonesia",ID,106.83333333,-6.13333333,Jakarta,Haze,Fog
+KRPUS,122,01,SW,27,24,14,24,"Busan, Korea, Republic Of",KR,129.05000000,35.13333333,"Busan,Korea, Republic Of",Overcast,Cloud
+THBKK,116,01,W,20,30,28,37,"Bangkok, Thailand",TH,100.51666667,13.75000000,Bangkok,Partly cloudy,Cloud
+VNSGN,116,01,S,11,29,26,30,"Ho Chi Minh City, Viet Nam",VN,106.66666667,10.76666667,Ho Chi Minh City,Partly cloudy,Cloud
+JPTYO,353,11,WSW,6,24,23,26,"Tokyo, Japan",JP,139.75000000,35.68333333,Tokyo,Light rain shower,Rain
+JPOSA,122,01,S,7,23,13,19,"Osaka, Japan",JP,135.50000000,34.66666667,Osaka,Shower In Vicinity,Cloud
+PHMNL,122,01,SE,7,29,19,28,"Manila, Philippines",PH,120.94343330,14.60171667,Manila,Overcast,Cloud
+CNNGB,116,01,S,22,31,24,33,"Ningbo, China",CN,121.68785000,29.93696667,Ningbo,Partly cloudy,Cloud
+CNWEI,116,01,SE,13,22,21,25,WEIHAI,CN,122.11666667,37.51666667,Weihai,Partly cloudy,Cloud
+MZBEW,116,01,W,11,21,14,22,"Beira, Mozambique",MZ,34.84000000,-19.83000000,Beira,Partly cloudy,Cloud
+NGTIN,308,17,WSW,9,20,20,28,"Tincan, Nigeria",NG,3.35011667,6.43156667,Tincan/Lagos,Heavy rain,Rain
+QADOH,113,21,NNE,13,32,31,36,"Doha, Qatar",QA,51.55523333,25.30228333,Doha,Sunny,Sunny
+SAJED,113,21,WNW,11,31,30,35,"Jeddah, Saudi Arabia",SA,39.16666667,21.53333333,Jeddah,Clear,Sunny
+SCPOV,116,01,ESE,30,26,25,26,"Port Victoria, Seychelles",SC,55.44000000,-4.61000000,Port Victoria,Partly cloudy,Cloud
+TNTUN,116,01,SE,7,22,27,36,"Tunis, Tunisia",TN,10.28330000,36.81660000,Tunis,Partly cloudy,Cloud
+TRMER,116,01,N,0,24,20,29,"Mersin, Turkey",TR,34.63333333,36.71666667,Mersin,Partly cloudy,Cloud
+TZDAR,116,01,WSW,11,20,20,30,"Dar Es Salaam, Tanzania, United Republic Of",TZ,39.28333333,-6.80000000,Dar Es Salaam,Partly cloudy,Cloud
+YEADE,116,01,ESE,10,31,22,31,"Aden, Yemen",YE,44.99636667,12.80320000,Aden,Partly cloudy,Cloud
+ZADUR,119,01,W,8,17,16,21,"Durban, South Africa",ZA,31.01666667,-29.85000000,Durban,Cloudy,Cloud
+USLGB,113,21,WNW,17,23,19,26,"Long Beach, United States",US,-118.18333333,33.76666667,"Long Beach, Ca, United States",Sunny,Sunny
+USOAK,116,01,W,30,18,13,19,"Oakland, United States",US,-122.33533330,37.81425000,"Oakland, Ca, United States",Partly cloudy,Cloud
+USNYC,113,21,SSE,0,26,20,30,"New York, United States",US,-74.00000000,40.70000000,"New York, Ny, United States",Clear,Sunny
+CNTAO,113,21,SW,7,27,19,24,QINGDAO,CN,120.31638330,36.09275000,Qingdao,Sunny,Sunny
+USMIA,296,11,E,9,23,29,30,"MIAMI, FL, UNITED STATES",US,-80.16636667,25.76846667,"Miami, Fl, United States",Light Rain,Rain
+NLRTM,296,11,SSE,19,17,15,19,"Rotterdam, Netherlands",NL,4.50000000,51.91666667,Rotterdam,Light Drizzle,Rain
+DEHAM,113,21,ESE,15,17,15,23,"Hamburg, Germany",DE,9.90563333,53.53435000,Hamburg,Clear,Sunny
+GBFXT,296,11,S,17,15,15,17,"Felixstowe, United Kingdom",GB,1.30120000,51.95598333,Felixstowe,Light Rain,Rain
+PLGDN,113,21,W,7,16,15,26,"Gdansk, Poland",PL,18.71575000,54.38751667,Gdansk,Clear,Sunny
+ITGIT,122,01,WSW,13,26,22,27,"Gioia Tauro, Italy",IT,15.90000000,38.41666667,Gioia Tauro,Overcast,Cloud
+MTMLA,113,21,NE,9,25,25,27,"Malta, Malta",MT,14.50000000,35.88333333,Malta (Valletta),Clear,Sunny
+FRLEH,113,21,SSW,30,15,14,17,"Le Havre, France",FR,0.15131667,49.47020000,Le Havre,Clear,Sunny
+SEGOT,116,01,SSE,11,16,16,22,"Goteborg, Sweden",SE,11.96666667,57.71666667,Goteborg,Partly cloudy,Cloud
+PTSIE,122,01,WSW,15,20,17,20,"Sines, Portugal",PT,-8.86666667,37.95000000,Sines,Overcast,Cloud
+BGBOJ,296,11,W,15,20,19,25,"Burgas, Bulgaria",BG,27.48015000,42.48338333,"Burgas, Bulgaria",Light Rain,Rain
+ESALG,113,21,W,22,22,19,28,"Algeciras, Spain",ES,-5.43395000,36.13930000,Algeciras,Clear,Sunny
+TRIST,116,01,SE,12,30,19,32,"Istanlbul, Turkey",TR,28.95740000,41.00066667,"Istanbul, Turkey",Partly cloudy,Cloud
+ESVLC,116,01,SW,6,23,24,38,"Valencia, Spain",ES,-0.31960000,39.43376667,Valencia,Partly cloudy,Cloud
+RULED,113,21,E,11,14,15,29,"Saint Petersburg, Russian Federation",RU,30.25000000,59.88333333,St. Petersburg (Ru),Sunny,Sunny
+DKAAR,248,19,S,2,12,12,20,"Arhus, Denmark",DK,10.21666667,56.15000000,Arhus,Fog,Fog
+ROCND,116,01,WNW,15,19,19,24,"Constanta, Romania",RO,28.65000000,44.18333333,Constanta,Partly cloudy,Cloud
+GRSKG,113,21,NNE,0,22,22,36,"Thessaloniki, Greece",GR,22.95000000,40.63333333,Thessaloniki,Clear,Sunny
+ITSPE,116,01,E,6,19,17,26,"La Spezia, Italy",IT,9.83333333,44.11666667,La Spezia,Partly cloudy,Cloud
+SIKOP,116,01,E,8,19,18,30,"Koper, Slovenia",SI,13.73390000,45.55251667,Koper,Partly cloudy,Cloud
+BEANR,296,11,SE,11,17,15,20,"Antwerpen, Belgium",BE,4.41666667,51.21666667,"Antwerpen, Belgium",Light Rain Shower,Rain
+CYLMS,143,19,NE,13,24,24,30,"Limassol, Cyprus",CY,33.05000000,34.68333333,Limassol,Mist,Fog
+UAILK,143,19,WNW,0,14,16,26,"Illichivs'K, Ukraine",UA,30.65545000,46.32858333,"Illichivs'K",Mist,Fog
+AUBNE,113,21,SSW,13,17,10,19,"Brisbane, Australia",AU,153.01666667,-27.46666667,"Brisbane, Australia",Sunny,Sunny
+AUFRE,122,01,NNE,22,13,10,18,"Fremantle, Australia",AU,115.74000000,-32.05000000,"Fremantle, Australia",Shower In Vicinity,Cloud
+AUMEL,116,01,NNE,15,11,6,12,"Melbourne, Australia",AU,144.96666667,-37.81666667,"Melbourne, Australia",Partly cloudy,Cloud
+AUSYD,116,01,WNW,13,15,8,14,"Sydney, Australia",AU,151.20000000,-33.85000000,"Sydney, Australia",Partly cloudy,Cloud
+BDCGP,116,01,SSE,9,28,27,29,"Chittagong, Bangladesh",BD,91.80020000,22.30556667,"Chittagong, Bangladesh",Partly cloudy,Cloud
+HKHKG,386,15,E,15,28,28,29,"Hong Kong, Hong Kong",HK,114.12128330,22.33098333,Hong Kong,Patchy light rain with thunder,Rain
+IDSRG,116,01,SSE,8,24,23,32,"Semarang, Indonesia",ID,110.48333333,-6.96666667,Semarang,Partly cloudy,Cloud
+IDSUB,116,01,S,5,26,24,31,"Surabaya, Indonesia",ID,112.75000000,-7.23333333,Surabaya,Partly cloudy,Cloud
+INCCU,143,19,SSW,9,31,29,36,"Kolkata, India",IN,88.35000000,22.56666667,Kolkata (Ex Calcutta),Haze,Fog
+INMAA,116,01,N,0,29,25,33,"Chennai, India",IN,80.28333333,13.08333333,Chennai (Ex Madras),Partly cloudy,Cloud
+INNSA,176,10,W,5,29,29,32,"Nhava Sheva, India",IN,72.95116500,18.94992600,Nhava Sheva (Jawaharlal Nehru),Patchy rain possible,Rain
+KHKOS,116,01,E,4,26,24,35,"Kompongsom, Cambodia",KH,103.51666667,10.60000000,"Kompongsom, Cambodia",Partly cloudy,Cloud
+KRKAN,353,11,SSW,11,24,17,24,"Gwangyang, Korea, Republic Of",KR,127.70000000,34.93333333,"Gwangyang,Korea, Republic Of",Light rain shower,Rain
+LKCMB,116,01,WSW,9,28,26,29,"Colombo, Sri Lanka",LK,79.85000000,6.91666667,Colombo,Partly cloudy,Cloud
+MYPEN,296,11,S,6,27,26,28,"Penang, Malaysia",MY,100.31666667,5.41666667,Penang (Georgetown),Light Rain,Rain
+MYPKG,116,01,N,0,25,25,29,"Port Klang, Malaysia",MY,101.40000000,3.00000000,Port Klang (Pelabuhan Klang),Partly cloudy,Cloud
+MYTPP,116,01,W,6,28,27,29,"Tanjung Pelepas, Malaysia",MY,103.55000000,1.36666667,Tanjung Pelepas,Partly cloudy,Cloud
+NZAKL,116,01,NNE,20,16,12,16,"Auckland, New Zealand",NZ,174.80000000,-36.83333333,Auckland,Partly cloudy,Cloud
+PKKHI,122,01,W,17,29,27,32,"Karachi, Pakistan",PK,66.97390000,24.82628333,Karachi,Smoke,Cloud
+SGSIN,116,01,SW,15,29,23,29,"Singapore, Singapore",SG,103.83925000,1.26285000,Singapore,Partly cloudy,Cloud
+THLCH,116,01,NW,6,31,28,31,"Laem Chabang, Thailand",TH,100.88333333,13.08333333,Laem Chabang,Partly cloudy,Cloud
+TWKHH,122,01,WSW,9,29,26,31,"Kaohsiung, Taiwan",TW,120.28003330,22.61150000,Kaohsiung,Shower In Vicinity,Cloud
+TWTPE,116,01,ESE,26,33,25,35,"Taipei, Taiwan",TW,121.51666667,25.03333333,Taipei,Partly cloudy,Cloud
+VNHPH,116,01,E,9,31,28,35,"Haiphong, Viet Nam",VN,106.77836670,20.83730000,Haiphong,Partly cloudy,Cloud
+CNSHA,113,21,SSW,19,32,27,34,"Shanghai, China",CN,121.49801670,31.36473333,Shanghai,Sunny,Sunny
+CNSHK,143,19,ESE,0,26,27,34,"Shekou, China",CN,113.91666667,22.48333333,Shekou,Mist,Fog
+CNSZX,116,01,ESE,7,31,28,32,"Shenzhen, China",CN,113.81997930,22.63929939,Shenzhen,Partly cloudy,Cloud
+CNXIP,248,19,S,5,19,15,28,"Xingang, China",CN,118.05000000,31.18330000,Xingang,Fog,Fog
+AEJEA,113,21,ESE,15,34,30,39,"Jebel Ali, United Arab Emirates",AE,55.04111667,25.02225000,"Jebel Ali, Uae",Sunny,Sunny
+DJJIB,116,01,WSW,5,31,30,36,"Djibouti, Djibouti",DJ,43.13740000,11.60355000,Djibouti,Partly cloudy,Cloud
+DZALG,113,21,SSW,0,23,26,33,"Algier, Algeria",DZ,3.05000000,36.75000000,Alger (Algiers),Clear,Sunny
+EGPSD,113,21,NNW,7,25,26,27,"Port Said, Egypt",EG,32.30281667,31.24628333,Port Said,Clear,Sunny
+ILASH,116,01,SSE,13,24,20,28,"Ashdod, Israel",IL,34.64193333,31.83290000,Ashdod,Partly cloudy,Cloud
+IQUQR,113,21,NW,17,34,33,47,"Umm Qasr, Iraq",IQ,47.93333333,30.03333333,Umm Qasr Port,Clear,Sunny
+IRBND,176,10,SE,16,30,30,32,"Bandar Abbas, Iran, Islamic Republic Of",IR,56.26666667,27.18333333,Bandar Abbas,Patchy rain possible,Rain
+JOAQJ,113,21,N,12,24,22,37,"Aqabah, Jordan",JO,35.00000000,29.53333333,"Al 'Aqabah",Clear,Sunny
+KEMBA,116,01,S,19,23,22,28,"Mombasa, Kenya",KE,39.66476400,-4.03687800,Mombasa,Partly cloudy,Cloud
+KWKWI,113,21,N,11,35,32,41,"Kuwait City, Kuwait",KW,48.00000000,29.32000000,Kuwait,Clear,Sunny
+LBBEY,113,21,SSE,11,25,18,27,"Beirut, Lebanon",LB,35.48333333,33.83333333,Beirut,Clear,Sunny
+LYTIP,113,21,NNW,4,26,27,34,"Tripoli, Libya",LY,13.20390000,32.90548333,Tripoli,Clear,Sunny
+MACAS,116,01,NNE,13,21,20,24,"Casablanca, Morocco",MA,-7.60000000,33.58333333,Casablanca,Partly cloudy,Cloud
+MUPLU,116,01,ESE,20,22,20,24,"Port Louis, Mauritius",MU,57.49000000,-20.16000000,Port Louis,Partly cloudy,Cloud
+RUVVO,116,01,SE,0,24,16,20,"Vladivostok, Russian Federation",RU,131.87806670,43.09688333,Vladivostok (Ru),Partly cloudy,Cloud
+FIHEL,113,21,E,9,18,18,24,"Helsinki, Finland",FI,24.97743333,60.17623333,Helsinki (Helsingfors),Sunny,Sunny
+CAVAN,116,01,SSE,17,24,16,22,"Vancouver, Canada",CA,-123.09653330,49.28985000,"Vancouver, Canada",Partly cloudy,Cloud
+PAMIT,356,18,SSE,3,23,17,27,"Manzanillo, Panama",PA,-79.88508333,9.35990000,"Manzanillo, Panama",Moderate or heavy rain shower,Rain
+PABLB,116,01,NNW,7,27,24,29,"Balboa, Panama",PA,-79.56608333,8.95605000,Balboa,Partly cloudy,Cloud
+JMKIN,116,01,ESE,35,29,25,30,"Kingston, Jamaica",JM,-76.82638333,17.97606667,Kingston,Partly cloudy,Cloud
+COBUN,353,11,WSW,4,26,23,29,"Buenaventura, Colombia",CO,-77.07635000,3.89376667,Buenaventura,Light rain shower,Rain
+MXESE,113,21,WNW,20,27,18,27,"Ensenada, Mexico",MX,-116.60000000,31.85000000,Ensenada,Sunny,Sunny
+PYASU,113,21,WSW,6,16,15,32,"Asuncion, Paraguay",PY,-57.66666667,-25.26666667,Asuncion,Clear,Sunny
+ARBUE,113,21,E,9,9,11,19,"Buenos Aires, Argentina",AR,-58.66666667,-34.58333333,"Buenos Aires, Argentina",Clear,Sunny
+ATVIE,113,21,SW,6,17,18,34,"VIENNA, AUSTRIA",AT,16.36666667,48.20000000,"Vienna, Austria",Clear,Sunny
+CNHUA,116,01,ESE,11,31,28,33,HUANGPU,CN,113.45330000,23.11140000,Huangpu,Partly cloudy,Cloud
+CNNKG,113,21,WSW,11,32,25,31,NANJING,CN,119.06265000,32.21346667,Nanjing,Sunny,Sunny
+GRPIR,113,21,NNW,0,25,24,34,PIRAEUS,GR,23.61666667,37.93333333,Piraeus,Clear,Sunny
+KRICN,116,01,NNE,4,27,23,31,"Incheon,Korea",KR,126.71666667,37.45000000,"Incheon Intl Apt/Seoul, Korea",Partly cloudy,Cloud
+JPFUK,122,01,SSW,17,30,24,31,FUKUOKA,JP,130.50000000,33.50000000,Fukuoka,Shower In Vicinity,Cloud
+JPKIJ,116,01,ENE,9,24,22,24,NIIGATA,JP,139.22420000,37.98648333,Niigata,Partly cloudy,Cloud
+JPNGO,116,01,N,0,26,23,25,NAGOYA- AICHI,JP,136.84041670,35.02280000,Nagoya- Aichi,Partly cloudy,Cloud
+JPNNG,122,01,S,7,23,16,25,NAGANO,JP,137.66477000,35.68360000,Nagano,Shower In Vicinity,Cloud
+JPSHS,116,01,SW,20,29,25,30,SHIMONOSEKI,JP,130.93583330,33.94718333,Shimonoseki,Partly cloudy,Cloud
+USSAV,122,01,ESE,6,26,23,32,"Savannah, United States",US,-81.13633333,32.12756667,"Savannah, Ga, United States",Overcast,Cloud
+CN030057,116,01,SSE,10,32,28,34,SHANGHAI YANGSHAN PORT,CN,122.02274500,30.38324700,Shanghai Yangshan Port,Partly cloudy,Cloud
+CN030055,116,01,S,26,35,24,33,NINGBO PORT,CN,121.53161700,29.55534300,Ningbo Port,Partly cloudy,Cloud
+CN030058,113,21,SSW,15,28,22,24,QINGDAO PORT,CN,120.19473200,36.05455500,Qingdao Port,Sunny,Sunny
+CN030056,113,21,S,22,35,27,34,SHANGHAI WAIGAOQIAO PORT,CN,121.35113000,31.22115300,Shanghai Waigaoqiao Port,Sunny,Sunny
+KZALA,116,01,SSE,0,27,17,34,ALMATY,KZ,76.95000000,43.25000000,Almaty,Partly cloudy,Cloud
+MXATM,176,10,SE,3,24,20,29,ALTAMIRA,MX,-97.91666667,22.40000000,Altamira,Patchy rain possible,Rain
+PAPTY,116,01,NNW,7,27,24,29,PANAMA- CIUDAD DE,PA,-79.53333333,8.96666667,Panama- Ciudad De,Partly cloudy,Cloud
+PLMAA,116,01,W,5,19,17,27,MALASZEWICZE,PL,23.51666667,52.03333333,Malaszewicze,Partly cloudy,Cloud
+PLMLA,113,21,WSW,9,16,16,26,MLAWA,PL,20.38000000,53.11000000,Mlawa,Clear,Sunny
+USPDX,113,21,N,7,30,14,32,"PORTLAND, OR, UNITED STATES",US,-122.75356670,45.64486667,"Portland, Or, United States",Sunny,Sunny
+USSEA,113,21,SW,6,23,14,32,"SEATTLE, WA, UNITED STATES",US,-122.34491670,47.59425000,"Seattle, Wa, United States",Sunny,Sunny
+CNSHQ,353,11,SSE,4,24,24,29,SHANGQIU,CN,115.61670000,34.38330000,Shangqiu,Light rain shower,Rain
+CNJNN,116,01,SSE,7,26,24,33,JINING,CN,113.13258000,40.99478000,Jining,Partly cloudy,Cloud
+CNHIA,116,01,ESE,3,23,22,29,HUAIAN,CN,119.13333333,33.50000000,Huaian,Partly cloudy,Cloud
+CNFYA,302,10,ESE,4,24,24,26,FUYANG,CN,115.81670000,32.90000000,Fuyang,Moderate rain,Rain
+CNHFE,248,19,N,11,25,24,31,HEFEI,CN,117.28080000,31.86390000,Hefei,Fog,Fog
+CNKHN,116,01,SW,7,29,28,36,NANCHANG,CN,115.86133330,28.68325000,Nanchang,Partly cloudy,Cloud
+CNGAZ,116,01,S,6,29,26,37,GANZHOU,CN,115.34820000,25.53810000,Ganzhou,Partly cloudy,Cloud
+CNHSC,116,01,WSW,2,27,24,35,SHAOGUAN,CN,113.61666667,24.80000000,Shaoguan,Partly cloudy,Cloud
+CNHEY,122,01,SSW,4,27,25,34,HEYUAN,CN,114.68333333,23.71666667,Heyuan,Overcast,Cloud
+CNCAN,116,01,ESE,11,31,29,34,GUANGZHOU,CN,113.25000000,23.11670000,Guangzhou,Partly cloudy,Cloud
+CNDGG,116,01,ESE,7,31,28,34,DONGGUAN,CN,113.75000000,23.03333333,Dongguan,Partly cloudy,Cloud
+CNRZH,122,01,ENE,5,23,22,25,RIZHAO,CN,119.53333333,35.38333333,Rizhao,Overcast,Cloud
+PHCEB,122,01,SW,6,29,26,29,CEBU,PH,123.92276670,10.30658333,Cebu,Overcast,Cloud
+BRSAO,116,01,E,11,15,15,22,"SAO PAULO, BRAZIL",BR,-46.56666667,-23.56666667,"Sao Paulo, Brazil",Partly cloudy,Cloud
+CNCKG,143,19,SSE,7,26,24,28,CHONGQING,CN,106.53288330,29.50440000,Chongqing,Mist,Fog
+CNCSX,113,21,S,15,32,27,35,CHANGSHA,CN,112.96670000,28.20000000,Changsha,Sunny,Sunny
+CNDFE,356,18,SW,7,23,23,26,DAFENG,CN,120.82208330,33.28331667,Dafeng,Moderate or heavy rain shower,Rain
+CNHUI,116,01,ESE,7,31,26,34,HUIZHOU,CN,114.36666667,23.08333333,Huizhou,Partly cloudy,Cloud
+CNSNG,248,19,S,5,19,15,28,SONGJIANG,CN,121.22670000,31.00940000,Songjiang,Fog,Fog
+CNSZH,353,11,ESE,5,24,16,25,SUZHOU,CN,120.61666667,31.31666667,Suzhou,Light rain shower,Rain
+CNYNT,116,01,SSE,9,23,21,28,YANTAI,CN,121.38198330,37.57981667,Yantai,Partly cloudy,Cloud
+DEFRA,113,21,ENE,13,16,8,18,FRANKFURT AM MAIN,DE,8.68333333,50.11666667,Frankfurt Am Main,Clear,Sunny
+INDEL,143,19,WSW,9,30,35,45,DELHI,IN,77.13136377,28.56649971,Delhi,Haze,Fog
+JPHKT,122,01,SW,19,32,24,31,HAKATA/FUKUOKA,JP,130.41666667,33.60000000,Hakata/Fukuoka,Shower In Vicinity,Cloud
+KRPTK,113,21,WSW,11,29,20,30,"PYEONGTAEK,KOREA, REPUBLIC OF",KR,127.10000000,36.96666667,"Pyeongtaek,Korea, Republic Of",Clear,Sunny
+MXREX,116,01,SE,24,35,25,36,REYNOSA,MX,-98.28333333,26.08333333,Reynosa,Partly cloudy,Cloud
+MYKUL,116,01,N,0,25,23,28,KUALA LUMPUR,MY,101.68000000,3.13000000,Kuala Lumpur,Partly cloudy,Cloud
+PLWAW,113,21,W,7,17,18,29,WARSZAWA,PL,21.00000000,52.25000000,Warszawa,Clear,Sunny
+PLWRO,248,19,SE,6,15,16,29,WROCLAW,PL,17.02670000,51.10810000,Wroclaw,Shallow Fog,Fog
+RUMOW,116,01,NE,9,11,11,24,MOSKVA,RU,37.61750000,55.75580000,Moskva,Partly cloudy,Cloud
+TRAMR,113,21,WSW,11,20,21,33,AMBARLI,TR,28.70000000,40.96666667,Ambarli,Clear,Sunny
+TRIZM,113,21,NNW,0,19,21,34,IZMIR,TR,27.15000000,38.41666667,Izmir,Clear,Sunny
+TWKEL,116,01,ESE,7,31,25,32,KEELUNG (CHILUNG),TW,121.75738330,25.14906667,Keelung (Chilung),Partly cloudy,Cloud
+VNHAN,116,01,E,9,31,28,36,HANOI,VN,105.85000000,21.03333333,Hanoi,Partly cloudy,Cloud
+CNLGY,116,01,SW,3,26,22,32,LONGYAN,CN,122.63333333,37.43333333,Longyan,Partly cloudy,Cloud
+CNYIK,116,01,SSE,9,24,20,31,YINGKOU,CN,122.21666667,40.65000000,Yingkou,Partly cloudy,Cloud
+PLBIK,356,18,SW,6,16,15,27,BISKUPIEC,PL,20.51005000,53.76659000,Biskupiec,Moderate or heavy rain shower,Rain

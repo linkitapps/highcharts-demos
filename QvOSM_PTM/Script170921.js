@@ -1,0 +1,1576 @@
+﻿'use strict'
+var ExName = "QvOSM_PVM";
+var QvOSM_PVM_exUrl = "/QvAjaxZfc/QvsViewClient.aspx?public=only&name=Extensions/"+ExName+"/";
+
+var uId;
+var weatherLayer;
+var vesselLayer;
+var portLayer;
+var tyPolyLayer;
+
+var points_map_layer;
+var pointDesc_map_layer;
+var layerFeatures;
+
+
+var QvOSM_PVM_MAP;
+var MapType = {};
+var moveArea = [];
+var aniFea = [];
+var weatherIcons = [];
+var QvOSM_PVM_Opt = {};
+var mapDataType;
+var mapAniObj = null;
+var broken_aniarr=[];
+var tyDateLabel = false;
+var vesselLabel = false;
+var tyDateLabelC = tyDateLabel;
+var vesselLabelC = vesselLabel;
+var oldZoom = 3;
+var vesselZoom=1;
+
+var fArray = [];
+var fArray1 = [];
+var fArray2 = [];
+/** Extend Number object with method to convert numeric degrees to radians */
+if (Number.prototype.toRadians === undefined) {
+    Number.prototype.toRadians = function() { return this * Math.PI / 180; };
+}
+
+/** Extend Number object with method to convert radians to numeric (signed) degrees */
+if (Number.prototype.toDegrees === undefined) {
+    Number.prototype.toDegrees = function() { return this * 180 / Math.PI; };
+}
+
+
+Qva.LoadCSS(QvOSM_PVM_exUrl+"css/Style.css");
+Qva.LoadCSS(QvOSM_PVM_exUrl+"css/ol.css");
+Qva.LoadCSS(QvOSM_PVM_exUrl+"css/bootstrap.min.css");
+
+Qva.LoadScript(QvOSM_PVM_exUrl+"Options.js", function(){
+Qva.LoadScript(QvOSM_PVM_exUrl+"js/d3.v3.min.js", function(){
+	Qva.LoadScript(QvOSM_PVM_exUrl+"js/ol.js", function(){
+		var drawWtLayer;
+		
+		var unique =  function(array) {
+			var result = [];
+			$.each(array, function(index, element) {
+				if ($.inArray(element, result) == -1) {
+					result.push(element);
+				}
+			});
+			return result;
+		}
+		setTimeout(function(){
+			for(var i=0; i<fArray.length; i++) {
+				animate(fArray[i], fArray1[i],fArray2[i]);
+			}
+		},10000);
+		var createIconStyle = function(icon, rotation, scale, name, offx, offy) {
+			
+			
+			
+			var obj = {
+				image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+					scale: scale ? scale : 1,
+					src: QvOSM_PVM_exUrl+'icon/'+icon+'.png',
+					rotation : 0//rotation ? rotation * Math.PI / 180 : 0
+				}))
+			};
+			//레이블 폰트
+			if(name){
+				obj.text = new ol.style.Text({
+						text: name,
+						scale:1,
+						offsetY: offy || 22,
+						offsetX: offx || 0,
+						stroke: new ol.style.Stroke({color: "#333", width:0.5}),
+						fill: new ol.style.Fill({
+						  color: '#eee'
+						})
+					});
+			};
+			return new ol.style.Style(obj);
+		}
+		
+		
+		var createvesselIcon = function(style,icon, rotation, scale, name, offx, offy) {
+			var imageicon;
+			if(style=="normal"){
+				var isEX = icon.split("_")[1];
+				/*
+				switch(isEX) {
+					case "BROKEN":
+						imageicon = "t05";
+						break;
+					case "NOTMOVING":
+						imageicon = "t03";
+						break;
+					case "MOVING":
+						imageicon = "t02";
+						break;
+					default:
+						imageicon = "t02";
+						break;
+				}
+				*/
+				imageicon = "t02";
+				
+			}else{
+				imageicon=icon;
+			}
+			
+			
+			
+			var obj = {
+				image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+					scale: scale ? scale : 1,
+					src: QvOSM_PVM_exUrl+'icon/'+imageicon+'.png',
+					rotation : 0//rotation ? rotation * Math.PI / 180 : 0
+				}))
+			};
+			//레이블 폰트
+			if(name){
+				obj.text = new ol.style.Text({
+						text: name,
+						scale:1,
+						offsetY: offy || 22,
+						offsetX: offx || 0,
+						stroke: new ol.style.Stroke({color: "#333", width:0.5}),
+						fill: new ol.style.Fill({
+						  color: '#eee'
+						})
+					});
+			};
+			return new ol.style.Style(obj);
+		}
+		function flash(feature) {
+			var start = new Date().getTime();
+			var listenerKey;
+			var duration = 10000;
+			listenerKey = QvOSM_PVM_MAP.on('postcompose', animateArray);
+			function animateArray(event) {
+				fArray.push(event);
+				fArray1.push(feature);
+				fArray2.push(listenerKey)
+			}
+			
+			
+			//broken_aniarr[broken_aniarr_i]=setTimeout(function(){flash(feature,broken_aniarr_i)},10000);
+		}
+		var start = new Date().getTime();
+			
+		var duration = 10000;
+		function animate(event, feature,listenerKey) {
+				
+				var vectorContext = event.vectorContext;
+			    var frameState = event.frameState;
+				var flashGeom = feature.getGeometry().clone();
+				var elapsed = frameState.time - start;
+				var elapsedRatio = elapsed / duration;
+				// radius will be 5 at start and 30 at end.
+				var radius = ol.easing.easeOut(elapsedRatio) * 25 + 5;
+				var opacity = ol.easing.easeOut(1 - elapsedRatio);
+				var style
+				if(true){
+					style = new ol.style.Style({
+						image: new ol.style.Circle({
+							radius: radius,
+							snapToPixel: false,
+							stroke: new ol.style.Stroke({
+								color: 'rgba(255, 0, 0, ' + opacity + ')',
+								width: 0.25 + opacity
+							})
+						})
+					});
+						  
+				}else style = new ol.style.Style();
+						
+				style.setZIndex(100000);
+				vectorContext.setStyle(style);
+				vectorContext.drawGeometry(flashGeom);
+				if (elapsed > duration) {
+					ol.Observable.unByKey(listenerKey);
+							
+				}
+				 // tell OpenLayers to continue postcompose animation
+						  
+				QvOSM_PVM_MAP.render();
+						  
+			}
+		var Func = {
+			moveArea : function(item, select, pointPopup, pointPopupContent){
+				var doc = Qv.GetCurrentDocument();
+				var loc = item.get('point');
+				var cd = item.get('key');
+				//var loc = item["p"];
+				//var cd = item["k"];
+				//var type = item["t"];
+				var	area = loc;
+				var view = QvOSM_PVM_MAP.getView();
+				var duration = 2000;
+				var start = +new Date();
+
+				var moveType = $("#moveType").val();
+
+				if(moveType == "fly"){
+					var pan = ol.animation.pan({
+						duration: duration,
+						source: /** @type {ol.Coordinate} */ (view.getCenter()),
+						start: start
+					});
+					var bounce = ol.animation.bounce({
+						duration: duration,
+						resolution: 2 * view.getResolution(),
+						start: start
+					});
+					QvOSM_PVM_MAP.beforeRender(pan, bounce);
+				}else if(moveType == "pan"){
+					var pan = ol.animation.pan({
+						duration: duration,
+						source: /** @type {ol.Coordinate} */ (view.getCenter()),
+						start: start
+					});
+					QvOSM_PVM_MAP.beforeRender(pan);
+				}else if(moveType == "elastic"){
+					var pan = ol.animation.pan({
+						duration: duration,
+						easing:function(t){
+							return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
+						},
+						source: /** @type {ol.Coordinate} */ (view.getCenter())
+					});
+					QvOSM_PVM_MAP.beforeRender(pan);
+				}else if(moveType == "bounce"){
+					var pan = ol.animation.pan({
+						duration: 2000,
+						easing: function(t){
+							var s = 7.5625, p = 2.75, l;
+							if (t < (1 / p)) {
+							  l = s * t * t;
+							} else {
+							  if (t < (2 / p)) {
+								t -= (1.5 / p);
+								l = s * t * t + 0.75;
+							  } else {
+								if (t < (2.5 / p)) {
+								  t -= (2.25 / p);
+								  l = s * t * t + 0.9375;
+								} else {
+								  t -= (2.625 / p);
+								  l = s * t * t + 0.984375;
+								}
+							  }
+							}
+							return l;
+						},
+						source: /** @type {ol.Coordinate} */ (view.getCenter())
+					});
+					QvOSM_PVM_MAP.beforeRender(pan);
+				}
+				/*
+				var zoom = ol.animation.zoom({
+					duration: duration,
+					resolution: 2 * view.getResolution(),
+					start: start
+				});
+				*/
+
+				view.setCenter(area);
+				
+				setTimeout(function(){
+					select.getFeatures().clear();
+					select.getFeatures().push(item);
+					
+					var info = {popup:item.get("popup"),	tyKey:item.get("tyKey")};
+					
+
+					if(info.popup){
+						pointPopupContent.innerHTML = '<p class="popup_content">'+info.popup+'</p>';
+						pointPopup.setPosition(area);
+					} else {
+						$("#popup-closer").trigger("click");
+					}
+
+					if(info.tyKey){
+						//var doc = Qv.GetCurrentDocument();
+						doc.SetVariable("vKEY_TYPHOON",info.tyKey);
+						//evt.preventDefault();
+					}
+					
+					
+				}, duration);
+				
+				//var doc = Qv.GetCurrentDocument();
+				doc.SetVariable("vMap_CD","S");
+				doc.SetVariable("vMapCode",cd);
+							
+			},
+			setMapType : function(newType) {
+				if(newType == 'OSM') {
+					QvOSM_PVM_MAP.setLayerGroup(MapType["layersOSM"]);
+				} else if (newType == 'TN') {
+					QvOSM_PVM_MAP.setLayerGroup(MapType["layersTn"]);
+				} else if (newType == 'MB') {
+					QvOSM_PVM_MAP.setLayerGroup(MapType["layersMb"]);
+				} else if (newType == 'MB2') {
+					QvOSM_PVM_MAP.setLayerGroup(MapType["layersMb2"]);
+				}
+				Func.refresh();
+				drawWtLayer();
+			},
+			refresh:function(){
+				var doc = Qv.GetCurrentDocument();
+				doc.SetVariable("vMapRefresh","1");
+			}
+		}
+		
+		
+		
+		if (Qva.Mgr.mySelect == undefined) {
+ 
+			Qva.Mgr.mySelect = function (e, t, n, r) {
+		 
+				if (!Qva.MgrSplit(this, n, r)) return;
+				e.AddManager(this);
+				this.Element = t;
+				this.ByValue = true;
+				t.binderid = e.binderid;
+				t.Name = this.Name;
+				t.onchange = Qva.Mgr.mySelect.OnChange;
+				t.onclick = Qva.CancelBubble
+			};
+			Qva.Mgr.mySelect.OnChange = function () {
+				var e = Qva.GetBinder(this.binderid);
+				if (!e.Enabled) return;
+				if (this.selectedIndex < 0) return;
+				var t = this.options[this.selectedIndex];
+				e.Set(this.Name, "text", t.value, true)
+			};
+			Qva.Mgr.mySelect.prototype.Paint = function (e, t) {
+				this.Touched = true;
+				var n = this.Element;
+				var r = t.getAttribute("value");
+				if (r == null) r = "";
+				var i = n.options.length;
+				n.disabled = e != "e";
+				for (var s = 0; s < i; ++s) {
+					if (n.options[s].value === r) {
+						n.selectedIndex = s
+					}
+				}
+				n.style.display = Qva.MgrGetDisplayFromMode(this, e)
+			}
+		}
+		Qva.AddExtension(ExName, function() { 
+			try {
+				var $element = $(this.Element);				
+				
+				uId = this.Layout.ObjectId.replace("\\", "_");
+				if(!window[uId])window[uId] = {};
+				window[uId]["id"] = uId;
+				
+				var rows = this.Data.Rows; 
+				
+				moveArea = [];
+				
+				if(mapAniObj === null)aniFea = [];
+				
+				var vesselData = [];
+				var portData = [];
+				var typhoonData = {
+					tyPos : [],
+					tyLine : {},
+					tyRadi : []
+				};
+				
+				var firstCenter = [];
+				
+					
+				if(rows.length < 1){
+					this.Element.innerHTML = "No Data";
+					return false;
+				}
+				
+				//설정값 변수
+				var zoom = "3";
+				var center = [127,38];
+				var weatherFlag = false;
+				var vesselFlag = false;
+				var typhoonFlag = false;
+				var aniFlag = false;
+				var aniInterval = 10;
+				
+				var defMap = "layersTn";
+				var defMove = "fly";
+				
+				var offy = 15;
+				
+				var weatherLayerDs = "none";
+				
+				
+				if(this.Layout.Text0 != null){
+					if(this.Layout.Text0.text != ""){
+						zoom = this.Layout.Text0.text;
+					}
+				}
+				
+				if(this.Layout.Text1 != null){
+					if(this.Layout.Text1.text != ""){
+						center = this.Layout.Text1.text.split(",");
+					}
+				}
+				
+				
+				if(this.Layout.Text2 != null){
+					if(this.Layout.Text2.text == "1"){
+						weatherFlag = true;
+						weatherLayerDs = "";
+					}
+				}
+				
+				if(this.Layout.Text3 != null){
+					if(this.Layout.Text3.text == "1"){
+						vesselFlag = true;
+					}
+				}
+				
+				if(this.Layout.Text4 != null){
+					if(this.Layout.Text4.text == "1"){
+						typhoonFlag = true;
+					}
+				}
+				if(this.Layout.Text5 != null){
+					if(this.Layout.Text5.text != "1"){
+						aniFlag = true;
+					}
+				}
+
+				
+				if(this.Layout.Text6 != null){
+					if(this.Layout.Text6.text != ""){
+						QvOSM_PVM_Design_Opt["typhoon"]["50knot"]["color"] = this.Layout.Text6.text;
+					}
+				}
+			
+				if(this.Layout.Text7 != null){
+					if(this.Layout.Text7.text != ""){
+						QvOSM_PVM_Design_Opt["typhoon"]["34knot"]["color"] = this.Layout.Text7.text;
+					}
+				}
+				if(this.Layout.Text8 != null){
+					if(this.Layout.Text8.text != ""){
+						QvOSM_PVM_Design_Opt["typhoon"]["line"]["color"] = this.Layout.Text8.text;
+					}
+				}
+				if(this.Layout.Text9 != null){
+					if(this.Layout.Text9.text != ""){
+						QvOSM_PVM_Design_Opt["typhoon"]["line"]["width"] = this.Layout.Text9.text;
+					}
+				}
+				
+				if(this.Layout.Text10 != null){
+					if(this.Layout.Text10.text == "1"){
+						tyDateLabel = true;
+					}
+				}
+				if(this.Layout.Text11 != null){
+					if(this.Layout.Text11.text == "1"){	
+						vesselLabel = true;
+					}
+				}
+				if(this.Layout.Text12 != null){
+					if(this.Layout.Text12.text != ""){
+						defMove = this.Layout.Text12.text.toLowerCase();
+						//console.log(defMove);
+					}
+				}
+				if(this.Layout.Text13 != null){
+					if(this.Layout.Text13.text != ""){
+						switch(this.Layout.Text13.text.toLowerCase()) {
+							case "satellite":
+								defMap = "layersTn";
+								break;
+							case "dark":
+								defMap = "layersMb";
+								break;
+							case "basic":
+								defMap = "layersMb2";
+								break;
+							case "lightblue":
+								defMap = "layersOSM";
+								break;
+							default:
+								defMap = "layersTn";
+						}
+						//console.log(defMap);
+					}
+				}
+				
+				
+				
+				var dataCnt = rows[0].length;
+				console.log(rows);
+				if(dataCnt === 12){
+					$(rows).each(function(i){
+						
+						var typhoonKey = (this[0])?this[0].text:"-";
+						var name = (this[1])?this[1].text:"-";
+						var lat = (this[2])?this[2].text:"0";
+						var lon = (this[3])?this[3].text:"0";
+						var vDirect = (this[4])?this[4].text:"0";
+						var inout = (this[5])?this[5].text:"-";
+						var type = (this[6])?this[6].text:"-";
+						var aniYN = (this[7])?this[7].text:"N";
+						var rout_seq = (this[8])?this[8].text:"N";
+						
+						var radius34_arr =(this[9])?this[9].text.split(","):[0,0,0,0];
+						var radius34_NE = radius34_arr[0];
+						var radius34_SE = radius34_arr[1];
+						var radius34_SW = radius34_arr[2];
+						var radius34_NW = radius34_arr[3];
+						
+						var radius50_arr =(this[9])?this[9].text.split(","):[0,0,0,0];
+						var radius50_NE = radius50_arr[0];
+						var radius50_SE = radius50_arr[1];
+						var radius50_SW = radius50_arr[2];
+						var radius50_NW = radius50_arr[3];
+						var popup = (this[10])?this[10].text:"-";
+						var tyIcon = (this[11])?this[11].text:"-";
+						var tyDate = (this[19])?this[19].text:"-";
+						
+						
+						
+						if(type === "VESSEL"){
+							
+							var vesselObj = {
+								typhoonKey : typhoonKey,
+								name : name,
+								point : [parseFloat(lon),parseFloat(lat)],
+								direction : vDirect,
+								inout : inout,
+								popup : popup,
+								aniYN : aniYN
+							};
+							
+							vesselData.push(vesselObj);
+						} else if (type === "TYPHOON") {
+							var tyPos = {
+								typhoonKey : typhoonKey,
+								point : [parseFloat(lon),parseFloat(lat)],
+								icon : tyIcon,
+								popup : popup,
+								aniYN : aniYN,
+								tyDate : tyDate
+							};
+							var tyLine = {
+								icon : tyIcon,
+								seq : parseInt(rout_seq),
+								point : [parseFloat(lon),parseFloat(lat)]
+							};
+							var ty34 = {
+								point : [parseFloat(lon),parseFloat(lat)],
+								radius : 34,
+								radiusNE : parseInt((radius34_NE > 0) ? radius34_NE:radius50_NE),
+								radiusSE : parseInt((radius34_SE > 0) ? radius34_SE:radius50_SE),
+								radiusSW : parseInt((radius34_SW > 0) ? radius34_SW:radius50_SW),
+								radiusNW : parseInt((radius34_NW > 0) ? radius34_NW:radius50_NW)
+							};
+							
+							var ty50 = {
+								point : [parseFloat(lon),parseFloat(lat)],
+								radius : 50,
+								radiusNE : parseInt(radius50_NE),
+								radiusSE : parseInt(radius50_SE),
+								radiusSW : parseInt(radius50_SW),
+								radiusNW : parseInt(radius50_NW)
+							};
+							
+							if(!typhoonData.tyLine[typhoonKey]) {typhoonData.tyLine[typhoonKey] = [];}
+							typhoonData.tyPos.push(tyPos);
+							typhoonData.tyLine[typhoonKey].push(tyLine);
+							
+							typhoonData.tyRadi.push(ty34);
+							typhoonData.tyRadi.push(ty50);
+						}else if(type ==="PORT"){
+							var portObj = {
+								typhoonKey : typhoonKey,
+								name : name,
+								point : [parseFloat(lon),parseFloat(lat)],
+								direction : vDirect,
+								inout : inout,
+								popup : popup,
+								aniYN : aniYN
+							};
+							//console.log(portObj);
+							portData.push(portObj);
+						}
+						
+						if(aniYN === "Y"){
+							moveArea.push({"k":typhoonKey, "t":type, "p":[parseFloat(lon),parseFloat(lat)]});
+						}
+						
+					});
+				} else {
+					this.Element.innerHTML = "Input Dimension, Expression";
+					return false;
+				}
+				
+				QvOSM_PVM_Opt = {
+					"weather":weatherFlag,
+					"vessel":vesselFlag,
+					"typhoon":typhoonFlag,
+					"zoom":zoom,
+					"center":center,
+					"ani":aniFlag,
+					"port":vesselFlag
+				};
+							
+				if(!this.framecreated){
+					if(mapAniObj != null){
+						clearInterval(mapAniObj);
+						mapAniObj = null;
+					}
+					var frmW = this.GetWidth();
+					var frmH = this.GetHeight();
+					
+					tyDateLabelC = tyDateLabel;
+					vesselLabelC = vesselLabel;
+					
+					var htmlString = '<div style="position:relative;float:left;width:100%;">'+
+												'<div id="markers"></div>'+
+												'<div class="zoomLevel region">- Region</div>'+
+												'<div class="zoomLevel subs">- Subsidiary</div>'+
+												'<div class="zoomLevel port">- Port</div>'+
+												'<div id="mapLayerBtn" class="mapLayerBtn">></div>';
+					//if(weatherFlag){
+						htmlString += '<div id="wtLayerBtn" class="wtLayerBtn" style="display:'+weatherLayerDs+';"><</div>';
+					//};
+					htmlString += '<div id="mapLayer" class="mapLayer" style="float:left;left:58px;top:5px;width:180px;display:none">'+
+											  '<div class="form-group">'+
+												'<div class="col-sm-10">'+
+													'<label class="control-label" style="color:#fff">Map Type</label>'+
+												'</div>'+
+												'<div class="col-sm-10">'+
+													//'<button ty="MB2" class="btn btn-default">Dark Blue</button>'+
+													'<img ty="MB2" src="'+QvOSM_PVM_exUrl+'icon/btn_basic.png"/>'+
+												'</div>'+
+												'<div class="col-sm-10">'+
+													//'<button ty="OSM" class="btn btn-default">Basic</button>'+
+													'<img ty="OSM" src="'+QvOSM_PVM_exUrl+'icon/btn_lightblue.png"/>'+
+												'</div>'+
+												'<div class="col-sm-10">'+
+													//'<button ty="MB" class="btn btn-default">Light Blue</button>'+
+													'<img ty="MB" src="'+QvOSM_PVM_exUrl+'icon/btn_dark.png"/>'+
+												'</div>'+
+												'<div class="col-sm-10">'+
+													//'<button ty="TN" class="btn btn-default">Dark</button>'+
+													'<img ty="TN" src="'+QvOSM_PVM_exUrl+'icon/btn_satellite.png"/>'+
+												'</div>'+
+												'<div class="col-sm-10" style="color:#fff;white-space : nowrap;">'+
+													'<input type="checkbox" id="tyDateLabel" '+(tyDateLabel?'checked="checked"':'')+' style="display:inline-block"/> <span style="white-space : nowrap;">Typhoon Date</span>'+
+												'</div>'+
+												'<div class="col-sm-10" style="color:#fff">'+
+													'<input type="checkbox" id="vesselLabel" '+(vesselLabel?'checked="checked"':'')+' style="display:inline-block"/> Vessel Name'+
+												'</div>'+
+											  '</div>';
+					//if(aniFlag){
+						htmlString += '<div class="form-group" id="mapMove">'+
+										'<div class="col-sm-12">'+
+											'<label class="control-label" style="color:#fff">Map Move</label>'+
+											'<select id="moveType" style="margin-left:5px"><option value="fly">Fly</option><option value="pan">Pan</option><option value="elastic">Elastic</option><option value="bounce">Bounce</option></select>'+
+										'</div>'+
+										//'<div class="col-sm-10">'+
+										//  '<button loc="[127,37]">Korea</button>'+
+										//'</div>'+
+										//'<div class="col-sm-10">'+
+										// '<button loc="[-0.12755, 51.507222]">London</button>'+
+										//'</div>'+
+									  '</div>'+
+									  '<div class="form-group">'+
+										'<div class="col-sm-10">'+
+											'<label class="control-label" style="color:#fff">Animation</label>'+
+										'</div>'+
+										'<div class="col-sm-12">'+
+											'<img id="aniPlay" src="'+QvOSM_PVM_exUrl+'icon/btn_play.png" style="float:left;margin:5px"/>'+
+											'<img id="aniStop" src="'+QvOSM_PVM_exUrl+'icon/btn_stop.png" style="float:left;margin:5px"/>'+
+											'<input type="text" class="form-control input-sm" id="aniInterval" placeholder="Interval" value="'+aniInterval+'" style="width:80px;float:left;margin-left:5px"/>'+
+										'</div>'+
+									  '</div>'
+					//};
+					htmlString += '</div>';
+					//if(weatherFlag){
+						htmlString += '<div id="weatherLayer" class="mapLayer weatherArea" style="display:none;float:right;right:30px;top:20px;width:130px;color:#ffffff">'+
+										  '<div class="form-group">'+
+											'<div class="col-sm-10">'+
+											  '<div class="checkbox">'+
+												'<label>'+
+												  '<input type="checkbox" class="w0" checked=checked> Weather'+
+												'</label>'+
+											  '</div>'+
+											'</div>'+
+											
+											'<div class="col-sm-10">'+
+											  '<div class="checkbox">'+
+												'<label>'+
+												  '<input type="checkbox" class="w1" checked=checked> Sunny'+
+												'</label>'+
+											  '</div>'+
+											'</div>'+
+											
+											'<div class="col-sm-10">'+
+											  '<div class="checkbox">'+
+												'<label>'+
+												  '<input type="checkbox" class="w2" checked=checked> Cloudy'+
+												'</label>'+
+											  '</div>'+
+											'</div>'+
+											
+										  '</div>'+
+									'</div>';
+					//};
+
+					htmlString += '<div id="pointPopup" class="ol-popup"><a href="#" id="popup-closer" class="ol-popup-closer"></a><div id="popup-content"></div></div><div id="geo-marker"></div>'+
+									'<div id="'+uId+'" class="map" style="width:'+frmW+'px;height:'+frmH+'px;"></div>'+
+								  '</div>';
+					//this.Element.innerHTML = '<div id="'+uId+'" class="map" style="width:'+frmW+'px;height:'+frmH+'px;opacity:0.6;"></div>';
+					this.Element.innerHTML = htmlString;
+					
+					this.framecreated = true;	
+					
+					MapType["layersOSM"] = new ol.layer.Group({
+						layers: [
+							new ol.layer.Tile({
+							  source: new ol.source.XYZ({
+								tileSize: [512, 512],
+								url: 'https://api.mapbox.com/styles/v1/seungok/ciov2x7gj003qdpnjymn2em34/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V1bmdvayIsImEiOiJjaW5oN3A4dWYwc2dxdHRtM2pzdDdqbGtvIn0.JLtJmHeZNzC5gg_4Z6ioZg'
+							  })
+							})
+						]
+					});
+										
+					/*MapType["layersMQ"] = new ol.layer.Group({
+						layers: [
+							new ol.layer.Tile({
+								source: new ol.source.MapQuest({layer: 'osm'})
+							})
+						]
+					});
+					*/
+					MapType["layersTn"] = new ol.layer.Group({
+						layers: [
+							new ol.layer.Tile({
+							  source: new ol.source.XYZ({
+								tileSize: [512, 512],
+								url: 'https://api.mapbox.com/styles/v1/seungok/ciousf1zl003sdqnfpcpfj19r/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V1bmdvayIsImEiOiJjaW5oN3A4dWYwc2dxdHRtM2pzdDdqbGtvIn0.JLtJmHeZNzC5gg_4Z6ioZg'
+							  })
+							})
+						]
+					});
+					
+					MapType["layersMb"] = new ol.layer.Group({
+						layers: [
+							new ol.layer.Tile({
+							  source: new ol.source.XYZ({
+								tileSize: [512, 512],
+								url: 'https://api.mapbox.com/styles/v1/seungok/ciov2zj68004cecni9t5oagqj/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V1bmdvayIsImEiOiJjaW5oN3A4dWYwc2dxdHRtM2pzdDdqbGtvIn0.JLtJmHeZNzC5gg_4Z6ioZg'
+							  })
+							})
+						]
+					});
+					MapType["layersMb2"] = new ol.layer.Group({
+						layers: [
+							new ol.layer.Tile({
+							  source: new ol.source.XYZ({
+								tileSize: [512, 512],
+								url: 'https://api.mapbox.com/styles/v1/seungok/ciouskftw003jcpnn296ackea/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2V1bmdvayIsImEiOiJjaW5oN3A4dWYwc2dxdHRtM2pzdDdqbGtvIn0.JLtJmHeZNzC5gg_4Z6ioZg'
+							  })
+							})
+						]
+					});
+
+
+					var mapCenter = QvOSM_PVM_Opt["center"];
+
+					if(mapCenter){
+						mapCenter = ol.proj.fromLonLat([parseFloat(mapCenter[0]),parseFloat(mapCenter[1])]);
+					}else{
+						mapCenter = ol.proj.fromLonLat([127,38]);
+					}
+					
+					if(firstCenter.length > 0 && aniFlag == true){
+						mapCenter = ol.proj.fromLonLat(firstCenter);
+					}
+					
+					QvOSM_PVM_MAP = new ol.Map({
+						layers: [
+							//MapType["layersTn"]
+							MapType[defMap]
+						],
+						controls: ol.control.defaults().extend([
+							//new ol.control.FullScreen(),
+							//new ol.control.OverviewMap(),
+							new ol.control.ScaleLine(),
+							new ol.control.Zoom(),
+							new ol.control.ZoomSlider()
+						]),
+						//renderer: 'canvas',
+						//loadTilesWhileAnimating: true,
+						target: uId,
+						view: new ol.View({
+						  center:mapCenter,
+						  zoom: QvOSM_PVM_Opt["zoom"]||3,
+						  minZoom: 2,
+						  maxZoom: 17
+						})
+						
+					});
+					$("#marker").html("");
+					QvOSM_PVM_MAP.getOverlays().clear();
+				
+					var pointPopup = new ol.Overlay({
+						element: document.getElementById("pointPopup"),
+						autoPan: true,
+						autoPanAnimation: {
+							duration: 250
+						 }
+					});
+					
+					QvOSM_PVM_MAP.addOverlay(pointPopup);
+					
+					var pointPopupContent = document.getElementById('popup-content');
+					var pointPopupCloser = document.getElementById('popup-closer');
+					
+					pointPopupCloser.onclick = function() {
+						pointPopup.setPosition(undefined);
+						pointPopupCloser.blur();
+						//select.getFeatures().clear();
+						return false;
+					};
+					
+
+					/* 커서 설정*/
+					QvOSM_PVM_MAP.on('pointermove', function(evt) {
+						var pointerFlag = QvOSM_PVM_MAP.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+							if(feature.get("popup") ){
+								return true;
+							}
+						});
+						
+						QvOSM_PVM_MAP.getTargetElement().style.cursor =  pointerFlag ? 'pointer' : '';
+						//QvOSM_PVM_MAP.getTargetElement().style.cursor = QvOSM_PVM_MAP.hasFeatureAtPixel(evt.pixel) ? 'pointer' : '';
+					});
+					
+					
+					/* 선택 인터랙션 */
+					var select = new ol.interaction.Select({
+						style: function(feature) {
+							return feature.get('sel_style') || feature.get('style');
+						}
+					});
+					
+					//QvOSM_PVM_MAP.getInteractions().extend([select]);
+					QvOSM_PVM_MAP.addInteraction(select);
+					//싱슬 클릭시 이벤트
+					QvOSM_PVM_MAP.on("singleclick", function (evt) {
+						select.getFeatures().clear();
+						//var mouseCoordInMapPixels = [evt.originalEvent.offsetX, evt.originalEvent.offsetY];
+						//console.log(evt);
+						//doc.SetVariable("vKEY_TYPHOON",tyKey);
+						var coordinate = evt.coordinate;
+						var info = QvOSM_PVM_MAP.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+							select.getFeatures().push(feature);
+							//console.log(feature.get("type"));
+							if(feature.get("type")=="PORT"){
+								for(var i=0;i<broken_aniarr.length;i++){
+									clearTimeout(broken_aniarr[i]);
+									
+								}
+								
+								
+								
+								var doc = Qv.GetCurrentDocument();
+								doc.SetVariable("vCALL_PORT",feature.get("tyKey"));
+							};
+							
+							
+							
+							return feature.get("popup");
+							
+						});
+						if(info){
+							pointPopupContent.innerHTML = '<p class="popup_content">'+info+'</p>';
+							pointPopup.setPosition(coordinate);
+						} else {
+							$("#popup-closer").trigger("click");
+						}						
+					});
+					
+					QvOSM_PVM_MAP.on("dblclick", function (evt) {
+						//var mouseCoordInMapPixels = [evt.originalEvent.offsetX, evt.originalEvent.offsetY];
+						var coordinate = evt.coordinate;
+						var tyKey = QvOSM_PVM_MAP.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+							return feature.get("tyKey");
+						});
+						if(tyKey){
+							var doc = Qv.GetCurrentDocument();
+							doc.SetVariable("vKEY_TYPHOON",tyKey);
+							evt.preventDefault();
+						}	
+					});
+					
+					$("#mapLayer").find("img").on("click", function(){
+						var ty = $(this).attr("ty");
+						if(ty){
+							Func.setMapType(ty);
+						}
+					});
+					
+					$("#mapLayerBtn").on("click", function(){
+						$("#mapLayer").toggle("slide", 1000, function(d){
+							if($("#mapLayer").css("display") == "none"){
+								$("#mapLayerBtn").html(">");
+							}else{
+								$("#mapLayerBtn").html("<");
+							}
+						});
+					});
+					
+					$("#wtLayerBtn").on("click", function(){
+						$("#weatherLayer").toggle("slide",{direction:"right"} ,1000, function(d){
+							if($("#weatherLayer").css("display") == "none"){
+								$("#wtLayerBtn").html("<");
+							}else{
+								$("#wtLayerBtn").html(">");
+							}
+						});
+					});
+					
+					$("#aniPlay").bind("click", function(){
+						var time = parseInt($("#aniInterval").val())*1000;
+						var mocnt = 0;
+						clearInterval(mapAniObj);
+						mapAniObj = null;
+						//if(moveArea.length > 0){
+						if(aniFea.length > 0){
+							mapAniObj = setInterval(function(){
+								if(mocnt > aniFea.length-1){
+									mocnt = 0;
+								}
+								//var item = moveArea[mocnt];
+								var item = aniFea[mocnt];
+								Func.moveArea(item, select, pointPopup, pointPopupContent);
+								mocnt++;
+							}, time);
+						}
+					});
+					
+					$("#aniStop").bind("click", function(){
+						clearInterval(mapAniObj);
+						mapAniObj = null;
+					});
+					
+					$("#tyDateLabel").on("click",function(){
+						tyDateLabelC = $("#tyDateLabel").is(":checked");
+						Func.refresh();
+					});
+					$("#vesselLabel").on("click",function(){
+						vesselLabelC = $("#vesselLabel").is(":checked");
+						Func.refresh();
+					});
+					
+					$("#moveType").find(">option[value="+defMove+"]").attr("selected", "true");
+					
+				//framecreated 끝
+				//}
+				drawWtLayer = function(){
+				//날씨 레이어
+				if(QvOSM_PVM_Opt["weather"]){
+					d3.csv(QvOSM_PVM_exUrl+"data/weather.csv", function(d){
+						weatherIcons = [];
+						var pos;
+						var weatherGroup = {};
+						
+				
+						$(d).each(function(){
+							//console.log(this);
+							var country = this.country;
+							var lon = this.lon;
+							var lat = this.lat;
+							var icon = this.icon;
+							var tempt = this.temperature;
+							var iconId = this.number;
+							var windDir = this.windDirNm;
+							var windSpeed = this.windSpeedVal;
+							var minTempt = this.minTemperature;
+							var maxTempt = this.maxTemperature;
+							var portName = this.PORT_NAME;
+							var desc = this.WEATHER_DESC;
+							var weatherG = this.WEATHER_GRP;
+							if(!weatherGroup[weatherG])weatherGroup[weatherG] = [];
+							weatherGroup[weatherG].push(icon);
+							if(iconId == "781"){
+								icon = iconId;
+							}
+							pos = new ol.Feature({
+								geometry: new ol.geom.Point(ol.proj.fromLonLat([parseFloat(lon),parseFloat(lat)]))
+							});
+							pos.setStyle(new ol.style.Style({
+								image: new ol.style.Icon( ({
+									opacity: 0.9,
+									scale:0.6,
+									//size : [100,100],
+									color: '#ffffff',
+									src: QvOSM_PVM_exUrl+'icon/'+icon+'.png'
+								}))
+							}));
+							pos.set("t", icon);
+							
+							pos.set("popup","Port : "+portName+"<br/>Weather : "+desc+"<br/>Temperature : "+tempt+" ºC<br/>Wind Speed : "+windSpeed+"(km/h)");
+							//pos.set("i",{"ty":"w","t":tempt,"c":country,"port":portName,"minTempt":minTempt,"maxTempt":maxTempt,"wDir":windDir,"wSpeed":windSpeed,"desc":desc});
+							weatherIcons.push(pos);
+						});
+				
+						var iconVector = new ol.source.Vector({
+							features: weatherIcons
+						});
+						if(weatherLayer)weatherLayer.getSource().clear();
+						weatherLayer = new ol.layer.Vector({
+							source:iconVector
+						});	
+						weatherLayer.setZIndex(0);
+						QvOSM_PVM_MAP.addLayer(weatherLayer);
+					
+						var weatherL = $element.find("#weatherLayer");
+				
+				
+				
+						var weatherString = ""+
+						'<div class="form-group">'+
+						  '<div class="col-sm-10">'+
+							'<div class="checkbox">'+
+							  '<label>'+
+								'<input type="checkbox" class="w0" checked=checked> Weather'+
+							  '</label>'+
+							'</div>'+
+						  '</div>';
+						for(var wg in weatherGroup) {
+							var iconList = unique(weatherGroup[wg]);
+							weatherString += ""+
+							  '<div class="col-sm-10">'+
+								'<div class="checkbox">'+
+								  '<label>'+
+									'<input type="checkbox" class="w1" data-icon="'+iconList.toString()+'" checked=checked> '+wg+
+								'</label>'+
+								'</div>'+
+							  '</div>';
+						}
+						weatherString +="</div>"
+						weatherL.html(weatherString);
+						$(".weatherArea").find(".w0").bind("change", function(){
+							var op = 0;
+							if(this.checked){
+								op = 0.9;
+								$(".weatherArea").find("input").attr("checked", "checked");
+								weatherLayer.setVisible(true);
+							}else{
+								$(".weatherArea").find("input").attr("checked", false);
+								weatherLayer.setVisible(false);
+							}
+							
+						});	  
+						$(".weatherArea").find(".w1").bind("change", function(){
+							var _this = this;
+							var features = weatherLayer.getSource().getFeatures();
+							var weatherFeatures = [];
+							var iconData = $(this).attr("data-icon").split(",");
+							//var iconData = $(this).data("icon");//.split(",");
+							for (var i = 0; i < features.length; i++) {
+								//var icon = features[i]["G"]["t"];
+								var icon = features[i].get("t");
+								//console.log(features[i].get("t"));
+								if(iconData.indexOf(icon)>-1){
+									weatherFeatures.push({icon:icon, fea : features[i]});
+								}
+							}
+							
+
+							$(this).unbind("change");
+							$(this).bind("change", function(){
+								var op = 0;
+								if(_this.checked){
+									op = 0.9;
+								}
+								
+								for (var i = 0; i < weatherFeatures.length; i++) {
+									var icon = weatherFeatures[i].icon;
+
+									weatherFeatures[i].fea.setStyle(new ol.style.Style({
+										image: new ol.style.Icon( ({
+											opacity: op,
+											scale:0.6,
+											//size : [100,100],
+											color: '#ffffff',
+											src: QvOSM_PVM_exUrl+'icon/'+icon+'.png'
+										}))
+									}));
+								}
+							});
+							
+							$(this).trigger("change");
+						});								
+					});
+				}
+				}
+				
+				drawWtLayer();
+			}
+				// Vessel 레이어
+				if(QvOSM_PVM_Opt["vessel"]){
+					var vIconFeas = [];
+					
+					
+					var vd_i = 0, vdLength = vesselData.length;
+					var broken_aniarr_i=0;
+					for(;vd_i < vdLength; vd_i++){
+						var point = ol.proj.fromLonLat(vesselData[vd_i].point);
+						var vIconFea = new ol.Feature(new ol.geom.Point(point));
+						vIconFea.set('tyKey', vesselData[vd_i].typhoonKey);
+						vIconFea.set('popup', vesselData[vd_i].popup);
+						
+						//icon, rotation, scale, name, offx, offy
+						if(!vesselLabelC){
+							vIconFea.set('style', createvesselIcon("normal","Vessel_"+vesselData[vd_i].inout, vesselData[vd_i].direction, 0.8));
+							vIconFea.set('sel_style', createvesselIcon("zoom","Vessel_"+vesselData[vd_i].inout+"_sel", vesselData[vd_i].direction, 0.8));
+							vIconFea.set('zoom_style', createvesselIcon("zoom","Vessel_"+vesselData[vd_i].inout+"", vesselData[vd_i].direction, 0.8));
+						}else{
+							vIconFea.set('style', createvesselIcon("normal","Vessel_"+vesselData[vd_i].inout, vesselData[vd_i].direction, 0.8, vesselData[vd_i].name, 0, offy));
+							vIconFea.set('sel_style', createvesselIcon("zoom","Vessel_"+vesselData[vd_i].inout+"_sel", vesselData[vd_i].direction, 0.8, vesselData[vd_i].name, 0, offy));
+							vIconFea.set('zoom_style', createvesselIcon("zoom","Vessel_"+vesselData[vd_i].inout+"", vesselData[vd_i].direction, 0.8, vesselData[vd_i].name, 0, offy));
+						}
+						
+						
+						if(vesselData[vd_i].inout.split("_")[0]=="BROKEN"){  
+							flash(vIconFea);	
+							broken_aniarr_i++;
+							
+						}
+						
+						
+						//vIconFea.set('importance', vd_i);
+						offy = (offy === 15) ? 22: 15;						
+						if(vesselData[vd_i].aniYN === 'Y' && mapAniObj === null){
+							vIconFea.set('key', vesselData[vd_i].typhoonKey);
+							vIconFea.set('point', point);
+							aniFea.push(vIconFea);
+						}
+						vIconFeas.push(vIconFea);
+						
+						
+					}
+					
+					var vIconVector = new ol.source.Vector({
+										features: vIconFeas
+									});
+					
+					vesselLayer = QvOSM_PVM_MAP.removeLayer(vesselLayer);
+					
+					//if(vesselLayer){vesselLayer.getSource().clear();}
+					
+					vesselLayer = new ol.layer.Vector({
+									style : function(feature) {
+												//return feature.get('style')
+												
+												if(vesselZoom==1){
+													return feature.get('style');
+												}else {
+													return feature.get('zoom_style');
+												}
+												
+												
+											},
+									source:vIconVector/*,
+									renderOrder: function(a, b) {
+											if (a.get('importance') < b.get('importance')) {
+											  return -1;
+											} else if (b.get('importance') > a.get('importance')) {
+											  return 1;
+											}
+											return 0;
+										}*/
+								});	
+					vesselLayer.setZIndex(1000);
+					QvOSM_PVM_MAP.addLayer(vesselLayer);
+					
+					//vesselLayer.set('selectable', true);
+
+				}
+				// port 레이어
+				if(QvOSM_PVM_Opt["port"]){
+					var pIconFeas = [];
+					
+					
+					var pd_i = 0, pdLength = portData.length;
+					for(;pd_i < pdLength; pd_i++){
+						var point = ol.proj.fromLonLat(portData[pd_i].point);
+						var pIconFea = new ol.Feature(new ol.geom.Point(point));
+						pIconFea.set('tyKey', portData[pd_i].typhoonKey);
+						pIconFea.set('type',"PORT");
+						pIconFea.set('popup', portData[pd_i].popup);
+						
+						//icon, rotation, scale, name, offx, offy
+						if(!vesselLabelC){
+							pIconFea.set('style', createIconStyle(portData[pd_i].inout, portData[pd_i].direction, 0.4));
+							pIconFea.set('sel_style', createIconStyle(portData[pd_i].inout, portData[pd_i].direction, 0.4, portData[pd_i].name, 0, offy));
+							
+						}else{
+							pIconFea.set('style', createIconStyle(portData[pd_i].inout, portData[pd_i].direction, 0.4, portData[pd_i].name, 0, offy));
+							pIconFea.set('sel_style', createIconStyle(portData[pd_i].inout, portData[pd_i].direction, 0.4, portData[pd_i].name, 0, offy));
+						}
+						
+						
+						
+						
+						
+					
+						offy = (offy === 15) ? 22: 15;						
+						if(vesselData[pd_i].aniYN === 'Y' && mapAniObj === null){
+							pIconFea.set('key', portData[pd_i].typhoonKey);
+							pIconFea.set('point', point);
+							aniFea.push(pIconFea);
+						}
+						pIconFeas.push(pIconFea);
+						
+						
+					}
+					
+					var pIconVector = new ol.source.Vector({
+										features: pIconFeas
+									});
+					
+					portLayer = QvOSM_PVM_MAP.removeLayer(portLayer);
+					
+					//if(vesselLayer){vesselLayer.getSource().clear();}
+					
+					portLayer = new ol.layer.Vector({
+									style : function(feature) {
+												return feature.get('style')
+												
+												
+												
+												
+												
+											},
+									source:pIconVector/*,
+									renderOrder: function(a, b) {
+											if (a.get('importance') < b.get('importance')) {
+											  return -1;
+											} else if (b.get('importance') > a.get('importance')) {
+											  return 1;
+											}
+											return 0;
+										}*/
+								});	
+					portLayer.setZIndex(1200);
+					QvOSM_PVM_MAP.addLayer(portLayer);
+					
+					//vesselLayer.set('selectable', true);
+
+				}
+				//typhoon 레이어
+				if(QvOSM_PVM_Opt["typhoon"]){
+					//변수, 함수 초기화
+					var pi2 = Math.PI/2;
+					var pi2Q = [];
+					for(var oi = 1; oi<5; oi++){	//원 4등분;
+						pi2Q.push(pi2*oi);
+					}
+					var rotate = 45;
+					var step = 0.1;	//좌표의 간격;
+					//distance - meter, bearing - 방위 360도
+					var destinationPoint = function(lon, lat, distance, bearing, radius) {
+						radius = (radius === undefined) ? 6371e3 : Number(radius);
+
+						// φ2 = asin( sinφ1⋅cosδ + cosφ1⋅sinδ⋅cosθ )
+						// λ2 = λ1 + atan2( sinθ⋅sinδ⋅cosφ1, cosδ − sinφ1⋅sinφ2 )
+						// see http://williams.best.vwh.net/avform.htm#LL
+
+						var δ = Number(distance) / radius; // angular distance in radians
+						var θ = Number(bearing) * Math.PI / 180;
+
+						var φ1 = lat.toRadians();
+						var λ1 = lon.toRadians();
+
+						var φ2 = Math.asin(Math.sin(φ1)*Math.cos(δ) + Math.cos(φ1)*Math.sin(δ)*Math.cos(θ));
+						var x = Math.cos(δ) - Math.sin(φ1) * Math.sin(φ2);
+						var y = Math.sin(θ) * Math.sin(δ) * Math.cos(φ1);
+						var λ2 = λ1 + Math.atan2(y, x);
+						
+						//[lon, lat]
+						return [(λ2.toDegrees()+540)%360-180, φ2.toDegrees()]; // normalise to −180..+180°
+					};
+					
+					//거리 구하기, x,y 값 배열 두개;
+					var getDistance = function(pt, pt2){
+						//경위도 거리 차이 보정 X
+						var x2 = Math.pow((pt[0]-pt2[0]),2);
+						var y2 = Math.pow((pt[1]-pt2[1]),2);
+						return Math.sqrt((x2+y2));
+					}
+					
+					//원 좌표구하기, 태풍위치, 북쪽, 남쪽, 동쪽, 서쪽 거리
+					var getTypoonCoordinates = function(center, north, south, east, west){
+						var radiusN = north;
+						var radiusS = south;
+						var radiusE = east;
+						var radiusW = west;
+		
+						
+						var pointNE = destinationPoint(center[0], center[1], north*1000, 45);
+						var pointSW = destinationPoint(center[0], center[1], south*1000, 225);
+						
+						center = ol.proj.fromLonLat(center);
+						
+						var radiusSN = [getDistance(center, ol.proj.fromLonLat(pointSW)), getDistance(center, ol.proj.fromLonLat(pointNE))]; //남북 거리;
+						var elipse_R = [];
+						
+						//타원 비율
+						elipse_R.push(radiusE/radiusS);	//[0] 남동;
+						elipse_R.push(radiusW/radiusS); //[1] 남서
+						elipse_R.push(radiusW/radiusN);//[2] 북서
+						elipse_R.push(radiusE/radiusN);//[3] 북동
+						
+						var xCent = center[0];
+						var yCent = center[1];
+						
+						var list = [];
+						var theta=0;
+						
+						for(var j = 0; j < 4; j++){							
+							var radius = radiusSN[parseInt(j/2)];
+							var elipseR = elipse_R[j];
+							
+							for(; theta < pi2Q[j]; theta+=step){
+								var x = xCent + (elipseR * radius * Math.cos(theta));
+								var y = yCent - radius*Math.sin(theta);
+								list.push([x, y]);
+							}
+						}
+						
+						//list.push(ol.proj.fromLonLat([xCent, yCent]));
+
+						return list;
+						//return {"list":list, "center": ol.proj.fromLonLat([center[0], center[1]])};
+					}
+					
+					
+					
+					//반경 폴리곤 그리기 시작
+					var tyPolyList = [];
+					var pTyi = 0;
+					var pTyLength = typhoonData.tyRadi.length;
+					
+					for(pTyi;pTyi<pTyLength; pTyi++){
+						var ce = typhoonData.tyRadi[pTyi].point;
+						var no = typhoonData.tyRadi[pTyi].radiusNE;
+						var so = typhoonData.tyRadi[pTyi].radiusSW;
+						var ea = typhoonData.tyRadi[pTyi].radiusSE;
+						var we = typhoonData.tyRadi[pTyi].radiusNW;
+						
+						if(no != 0 && so != 0){							
+							tyPolyList.push(
+								{'type': 'Feature',
+								 'geometry': {
+									'type': 'Polygon',
+									'coordinates': [getTypoonCoordinates(ce, no, so, ea, we)]
+									},
+								 'properties':{
+									'center' : ol.proj.fromLonLat(ce),
+									'winSpeed' : typhoonData.tyRadi[pTyi].radius || 34
+									}
+								}
+							);
+						}
+					}
+					var tyPolyStyle = [
+						new ol.style.Style({
+						  stroke: new ol.style.Stroke({
+							color: QvOSM_PVM_Design_Opt["typhoon"]["50knot"]["color"],
+							width: 1
+						  }),
+						  fill: new ol.style.Fill({
+							color: QvOSM_PVM_Design_Opt["typhoon"]["50knot"]["color"]
+						  })
+						}),
+						new ol.style.Style({
+						  stroke: new ol.style.Stroke({
+							color: QvOSM_PVM_Design_Opt["typhoon"]["34knot"]["color"],
+							width: 1
+						  }),
+						  fill: new ol.style.Fill({
+							color: QvOSM_PVM_Design_Opt["typhoon"]["34knot"]["color"]
+						  })
+						}),
+						new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: QvOSM_PVM_Design_Opt["typhoon"]["line"]["color"],
+								width: 5
+							}),
+							fill: new ol.style.Fill({
+								color: QvOSM_PVM_Design_Opt["typhoon"]["line"]["width"]
+							})
+						}),
+						//태풍 지난 경로
+						new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: "#555",
+								width: 5
+							}),
+							fill: new ol.style.Fill({
+								color: "#555"
+							})
+						})
+					]
+					
+					var geojsonObject = {
+						'type': 'FeatureCollection',
+						'crs': {
+							'type': 'name',
+							'properties': {
+								'name': 'EPSG:4326'
+							}
+						},
+						'features': tyPolyList
+					};
+									
+					var geoFeatures = (new ol.format.GeoJSON()).readFeatures(geojsonObject);
+					var ff;
+					//회전
+					for(ff in geoFeatures){
+						var center = geoFeatures[ff].getProperties().center;
+						geoFeatures[ff].getGeometry().rotate(45 * Math.PI / 180, center);
+					}
+					
+					var tyPolyLSource = new ol.source.Vector({
+						features: geoFeatures
+					});
+					
+					
+					//태풍 예상 경로
+					var tyLines = [];
+					var tyCurSeq = 0;
+					var startSeq = 0;
+					for(var tyKey in typhoonData.tyLine){
+						var tyLine = typhoonData.tyLine[tyKey];
+						var tyLineLength = tyLine.length;
+						tyCurSeq = 0;
+						
+						if( tyLineLength > 1){
+							var tyL_i = 0;
+							
+							tyLine.sort(function (a, b) { 
+								return a.seq < b.seq ? -1 : a.seq > b.seq ? 1 : 0;  
+							});
+							//현재 태풍 위치 찾기
+							for(var ci = 0; ci<tyLineLength; ci++){
+								if(tyLine[ci].icon === "tyhpoon_icon"){
+									tyCurSeq = tyLine[ci].seq;
+								}
+							}
+
+							for(;tyL_i<tyLineLength-1;tyL_i++){
+								var coordinates = [ol.proj.fromLonLat(tyLine[tyL_i].point), ol.proj.fromLonLat(tyLine[tyL_i+1].point)]; 
+								
+								var tyLineFea = new ol.Feature({
+										  geometry: new ol.geom.LineString(coordinates),
+										  name: 'Line'
+									  })
+								if(tyLine[tyL_i].seq < tyCurSeq){
+									tyLineFea.set("style", tyPolyStyle[3]);
+								}
+								tyLines.push(tyLineFea);
+							}
+						
+							
+						}
+					}
+
+					tyPolyLSource.addFeatures(tyLines);
+					
+					//태풍 아이콘
+					var tyIconFeas = [];
+					var tyi_i = 0, tyPosLength = typhoonData.tyPos.length;
+					
+					for(;tyi_i < tyPosLength; tyi_i++){
+						var tyIconFea = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(typhoonData.tyPos[tyi_i].point)));
+						
+						tyIconFea.set('tyKey', typhoonData.tyPos[tyi_i].typhoonKey);
+						tyIconFea.set('popup',  typhoonData.tyPos[tyi_i].popup);
+						//icon, rotation, scale, name, offx, offy
+						if(tyDateLabelC){
+							tyIconFea.set('style', createIconStyle(typhoonData.tyPos[tyi_i].icon, null, null, typhoonData.tyPos[tyi_i].tyDate, 50, offy));
+						} else {
+							tyIconFea.set('style', createIconStyle(typhoonData.tyPos[tyi_i].icon));
+						}
+						offy = (offy === 15) ? 22: 15;
+						
+						tyIconFeas.push(tyIconFea);
+						
+						if(typhoonData.tyPos[tyi_i].aniYN === 'Y' && mapAniObj === null){
+							tyIconFea.set('key', typhoonData.tyPos[tyi_i].typhoonKey);
+							tyIconFea.set('point', ol.proj.fromLonLat(typhoonData.tyPos[tyi_i].point));
+							aniFea.push(tyIconFea);
+						}
+						
+						
+					}
+					
+					tyPolyLSource.addFeatures(tyIconFeas);
+					
+					tyPolyLayer = QvOSM_PVM_MAP.removeLayer(tyPolyLayer);
+					
+					//if(tyPolyLayer){tyPolyLayer.getSource().clear();}
+					tyPolyLayer = new ol.layer.Vector({
+						source: tyPolyLSource,
+						style: function(feature){
+							if(feature.get("style")){
+								return feature.get("style");
+							}else if(feature.getProperties().winSpeed == 50){
+								feature.set("style", tyPolyStyle[0]);
+								return tyPolyStyle[0];
+							}else if (feature.getProperties().winSpeed == 34) {
+								feature.set("style", tyPolyStyle[1]);
+								return tyPolyStyle[1];
+							}else {
+								feature.set("style", tyPolyStyle[2]);
+								return tyPolyStyle[2];
+							}
+						}
+					});
+
+					QvOSM_PVM_MAP.addLayer(tyPolyLayer);
+					
+					function onZoom(evt) {
+						var view = evt.target;
+						if(oldZoom==view.getZoom()){
+							
+						}else if(view.getZoom()>4){
+							vesselZoom=2
+							vesselLayer.changed();
+						}else{
+							vesselZoom=1
+							vesselLayer.changed();
+						}
+						oldZoom=view.getZoom();
+					}
+
+					QvOSM_PVM_MAP.getView().on('propertychange', onZoom);
+				}	
+			}catch(e){
+				console.log(e.message);
+			}
+		});
+
+	});
+});	
+});					

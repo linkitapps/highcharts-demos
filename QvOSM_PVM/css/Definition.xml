@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExtensionObject Label="QvOSM" Description="QvOSM" PageHeight="10000000">
+	<Dimension Multiple="" Label="Dimensions:" TargetName="Dimension" Initial=""/>
+	<Expression Multiple="" Label="Expressions:" TargetName="Expression" Initial="" />	
+	<Text Label="날씨 : " type="checkbox" Expression="" Initial=""/>
+	<Text Label="Zoom : " type="select" Expression="" Initial=""/>
+	<Text Label="Center : " Expression="" Initial="127,38"/>
+    <Initiate Name="Chart.BgColor.ColorHex" value="#E0FFE0" />
+	<Initiate Name="Caption.Text" value="" />
+</ExtensionObject>

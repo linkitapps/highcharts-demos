@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExtensionObject Label="QvOSM_INTENSIVE" Description="QvOSM_INTENSIVE" PageHeight="10000000">
+	<Dimension Multiple="" Label="Dimensions:" TargetName="Dimension" Initial=""/>
+	<Expression Multiple="" Label="Expressions:" TargetName="Expression" Initial="" />	
+	<Text Label="Zoom : " Expression="3"/>
+	<Text Label="Center : " Expression="127,38"/>
+</ExtensionObject>

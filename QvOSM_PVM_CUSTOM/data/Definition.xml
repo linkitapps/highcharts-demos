@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExtensionObject Label="QvOSM" Description="QvOSM" PageHeight="10000000">
+	<Dimension Multiple="" Label="Dimensions:" TargetName="Dimension" Initial=""/>
+	<Expression Multiple="" Label="Expressions:" TargetName="Expression" Initial="" />	
+	<Text Label="애니메이션 속도 : " Expression="" Initial="3000"/>
+	<Text Label="비행기 속도 : " Expression="" Initial="5000"/>
+    <Initiate Name="Chart.BgColor.ColorHex" value="#E0FFE0" />
+	<Initiate Name="Caption.Text" value="" />
+</ExtensionObject>

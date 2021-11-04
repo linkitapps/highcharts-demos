@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<img id="img_content" style="height:600px;">
+	</body>
+</html>
+<script type="text/javascript">
+	
+	document.getElementById('img_content').src = getParrams();
+	
+	function getParrams(){
+		var param = "";
+		
+		var url = decodeURIComponent(location.href);
+		url = decodeURIComponent(url);
+		var params;
+		// url에서 '?' 문자 이후의 파라미터 문자열까지 자르기
+		params = url.split("&qImageUrl=");
+		
+		return params[1];		
+	}
+	
+
+</script>
