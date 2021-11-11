@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>Exception List</title>
+<meta http-equiv="Content-Type"  content="text/html; charset=UTF-8"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Expires"       content="-1"/>
+<meta http-equiv="Pragma"        content="no-cache"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/base.css?version=20200117105451"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/common.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/content_page.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/content_plugin.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/layout.css?version=20210630195553"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/chosen/chosen.min.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/jquery/jquery-ui.min.css?version=20200117105455"/> 
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/jquery/datepicker/daterangepicker.min.css?version=20200117105456"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/jquery/MonthPicker.min.css?version=20200117105455"/> 
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/bootstrap.min.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/tooltipster/tooltipster.bundle.min.css?version=20200117105456"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/content_basic.css?version=20210630204904"/>
+<link rel="stylesheet" type="text/css" href="../common/pvs/css/c01/user_thema.css?version=20200117105452"/>
+<link rel="stylesheet" type="text/css" href="../n_css/jquery.fancybox.css"/>
+<link rel="stylesheet" type="text/css" href="../n_css/slick.css"/>
+<link rel="stylesheet" type="text/css" href="../n_css/add_c01.css"/>
+
+<script type="text/javascript" src="../common/pvs/js/jquery/jquery-1.12.4.min.js?version=20200117105456"></script>
+<script type="text/javascript" src="../common/pvs/js/jquery/jquery-ui.js?version=20200117105456"></script>
+<script type="text/javascript" src="../common/pvs/js/jquery/jquery.custom.scrollbar.min.js?version=20200117105456"></script>
+<script type="text/javascript" src="../n_js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="../n_js/slick.js"></script>
+<script type="text/javascript" src="../n_js/ui_common.js"></script>
+</head>
+<body>
+
+	<div class="nl_wrap01">
+		<div class="nl_tsch01">
+			<div class="w1">
+				<div class="e1">
+					<a href="javascript:;" class="btn_nl_tsch01_info01"><span class="blind">Information</span></a>
+				</div>
+				<div class="e2">
+					<div class="r1">
+						<input type="text" placeholder="Please enter B/L, Container or Invoice number(s)." />
+					</div>
+					<a href="#" class="btn_nl_tsch01"><span class="blind">검색</span></a>
+				</div>
+			</div>
+			<div class="w2 tog_dsch01">
+				<a href="javascript:;" class="on">Hide Detailed Search</a>
+			</div>
+		</div>
+		
+		<div class="nl_tnb01">
+			<div class="lt">
+				<div class="w1">
+					<ul>
+						<li><a href="javascript:;" class="on"><span>Sea</span></a></li>
+						<li><a href="javascript:;"><span>Air</span></a></li>
+					</ul>
+				</div>
+				<div class="w2">
+					<select>
+						<option>POD ETA</option>
+						<option>POD ATA</option>
+						<option>POL ETD</option>
+						<option>POL ATD</option>
+						<option>FDEST ETA</option>
+						<option>FDEST ATA</option>
+					</select>
+				</div>
+				<div class="w3">
+					<div class="e1">
+						<input type="text" value="2021-08-25"/>
+						<a href="javascript:;" class="btn_cal01"><span class="blind">date</span></a>
+					</div>
+					<div class="e2">~</div>
+					<div class="e1">
+						<input type="text" value="2021-08-25"/>
+						<a href="javascript:;" class="btn_cal01"><span class="blind">date</span></a>
+					</div>
+				</div>
+				<div class="w4">
+					<div class="e1">
+						<div class="r1">
+							POL
+						</div>
+						<div class="r2">
+							<input type="text" placeholder="Please enter port code or name" />
+						</div>
+					</div>
+					<div class="e2">
+					~
+					</div>
+					<div class="e3">
+						<div class="r1">
+							<select>
+								<option>POD</option>
+								<option>FDEST</option>
+							</select>
+						</div>
+						<div class="r2">
+							<input type="text" placeholder="Please enter port code or name" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rt">
+				<a href="#">Search</a>
+			</div>
+		</div><!-- //nl_tnb01 -->
+		
+		<div class="nl_cwrap02">
+			<div class="nl_ctp01">
+				<div class="lt">
+					<p>Total 9,999</p>
+				</div>
+				<div class="rt">
+					<div class="w1">
+						<div class="e1">
+							<input type="checkbox" id="inp_model">
+							<label for="inp_model">Model</label>
+						</div>
+						<div class="e2">
+							<a href="javascript:;"><span class="blind">information</span></a>
+							<div class="rinfo01">
+								<p>Check the box and download EXCEL to see the model information</p>
+							</div>
+						</div>
+					</div>
+					<div class="w2">
+						<a href="#"><span>Down</span></a>
+					</div>
+					<div class="w3">
+						<div class="e1">
+							<strong>1</strong>
+							<span>/99</span>
+						</div>
+						<div class="e2">
+							<a href="#" class="prev"><span class="blind">prev</span></a>
+							<a href="#" class="next"><span class="blind">next</span></a>
+						</div>
+					</div>
+				</div>
+			</div><!-- //nl_ctp01 -->
+			<div class="nl_ctp02">
+				<table>
+					<colgroup>
+						<col style="width:6%;">
+						<col style="width:10%;">
+						<col style="width:12%;">
+						<col style="width:12%;">
+						<col style="width:12%;">
+						<col style="width:12%;">
+						<col style="width:12%;">
+						<col style="width:18%;">
+						<col style="width:6%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th rowspan="2">No.</th>
+							<th rowspan="2">Carrier</th>
+							<th rowspan="2">
+								<a href="javascript:;" class="ex01">Shipping No.</a>
+								<!--  <a href="javascript:;" class="ex01">Shipping No.</a> -->
+							</th>
+							<th colspan="4">Shipment Status</th>
+							<th rowspan="2">Detail</th>
+							<th rowspan="2">
+								<a href="javascript:;" class="ex02">Bookmark</a>
+								<!--  <a href="javascript:;" class="ex02 on">Bookmark</a> -->
+							</th>
+						</tr>
+						<tr class="tp02">
+							<th>POL Departure</th>
+							<th>T/S Departure</th>
+							<th>POD Arrival</th>
+							<th>FDEST Arrival</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<img src="../n_img/temp_ca01.png" class="ss_img01"/>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd1 chk line">
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01</p>
+									</div>
+									<div class="dv wd1 ept eline">
+										<p class="w1">Singapore</p>
+										<p class="w2">2021-07-20</p>
+									</div>
+									<div class="dv wd1 gept gline">
+										<p class="w1">Hamburg</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr01">+7d</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Berlin</p>
+										<p class="w2">2021-08-10</p>
+										<div class="dv_rt01">25%</div>
+									</div>
+									
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<img src="../n_img/temp_ca02.png" class="ss_img01"/>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd1 ept eline">
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01<span class="bcd01 bcd_cr02">+5d</span></p>
+									</div>
+									<div class="dv wd1 gept gline">
+										<p class="w1">Singapore</p>
+										<p class="w2">2021-07-20</p>
+									</div>
+									<div class="dv wd1 gept gline">
+										<p class="w1">Adelaide</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr02">+3d</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Berlin</p>
+										<p class="w2">2021-08-10</p>
+										<div class="dv_rt01">15%</div>
+									</div>
+									
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01 on"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<img src="../n_img/temp_ca03.png" class="ss_img01"/>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd2 chk line">
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01</p>
+									</div>
+									<div class="dv wd1"></div>
+									<div class="dv wd1 chk eline">
+										<p class="w1">Hamburg</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr02">+3d</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Berlin</p>
+										<p class="w2">2021-08-10</p>
+										<div class="dv_rt01">75%</div>
+									</div>
+									
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<span class="ss_emp_logo01">
+									<span>USAC</span>
+								</span>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd2 chk line">
+										<div class="dv_lt01">
+											<a href="javascript:;"><span class="blind">caution</span></a>
+											<div class="dv_lt01_con">
+												<p>Regulation(Ningbo, ETC)</p>
+											</div>
+										</div>
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01</p>
+									</div>
+									<div class="dv wd1"></div>
+									<div class="dv wd1 ept iline">
+										<p class="w1">Singapore</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr03">-3</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Hamburg</p>
+										<p class="w2">2021-08-04</p>
+										<div class="dv_rt01">60%</div>
+									</div>
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<img src="../n_img/temp_ca05.png" class="ss_img01"/>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd1 ept eline">
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01</p>
+									</div>
+									<div class="dv wd1 gept gline">
+										<p class="w1">Singapore</p>
+										<p class="w2">2021-07-20</p>
+									</div>
+									<div class="dv wd1 gept gline">
+										<p class="w1">Hamburg</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr02">+7d</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Berlin</p>
+										<p class="w2">2021-08-10</p>
+										<div class="dv_rt01">20%</div>
+									</div>
+									
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+						<tr>
+							<td>9,990</td>
+							<td>
+								<img src="../n_img/temp_ca06.png" class="ss_img01"/>
+							</td>
+							<td>
+								CSLU6331375<br />005BA01120<a href="#" class="btn_doc01"><span class="blind">document</span></a>
+							</td>
+							<td colspan="4">
+								<div class="ss_wrap01">
+									<div class="dv wd2 chk line">
+										<p class="w1">Busan</p>
+										<p class="w2">2021-07-01</p>
+									</div>
+									<div class="dv wd1"></div>
+									<div class="dv wd1 chk eline">
+										<p class="w1">Hamburg</p>
+										<p class="w2">2021-08-04<span class="bcd01 bcd_cr02">+3d</span></p>
+									</div>
+									<div class="dv wd1 gept">
+										<p class="w1">Berlin</p>
+										<p class="w2">2021-08-04</p>
+										<div class="dv_rt01">75%</div>
+									</div>										
+								</div>
+							</td>
+							<td class="td01">
+								<p>
+									<strong>Incoterms</strong>
+									<span>DDP</span>
+								</p>
+								<p>
+									<span>TS1(SGSIN)</span>
+								</p>
+								<p>
+									<strong>Invoice No.</strong>
+									<span>VND2161418</span>
+								</p>
+							</td>
+							<td>
+								<a href="#" class="btn_bm01"><span class="blind">Bookmark</span></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="nl_rtm01 tp02">
+			<div class="nl_rtm01_btm">
+				<h3>Quick</h3>
+				<ul>
+					<li>
+						<a href="#"><span>Bookmark</span></a>
+					</li>
+					<li>
+						<a href="#"><span>Irregularity</span></a>
+					</li>
+					<li>
+						<a href="#"><span>Chatbot</span></a>
+					</li>
+				</ul>
+			</div>
+		</div><!-- //nl_rtm01 -->
+		
+	</div>
+
+	
+</body>
+</html>

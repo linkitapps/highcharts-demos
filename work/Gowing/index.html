@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="format-detection" content="telephone=no">
+<title>PANTOS</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<style>
+.hidden {
+	text-indent: -9999px;
+	overflow: hidden;
+	height: 0;
+	width: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+	line-height: 0;
+}
+</style>
+</head>
+
+<body>
+	<table style="width:100%;">
+		<tr>
+			<th style="width:25px;">no</th>
+			<th>타이틀</th>
+			<th>경로</th>
+			<th>비고</th>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard</td>
+			<td><a href="./html/DB0010.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0020 Dashboard - Map</td>
+			<td><a href="./html/DB0020.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0030 Dashboard - Map Detail</td>
+			<td><a href="./html/DB0030.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard - Pop01</td>
+			<td><a href="./html/DB0010_pop01.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard - Pop02</td>
+			<td><a href="./html/DB0010_pop02.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard - Pop03</td>
+			<td><a href="./html/DB0010_pop03.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard - Pop04</td>
+			<td><a href="./html/DB0010_pop04.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">DB0010 Dashboard - My Shipments Icon</td>
+			<td><a href="./html/DB0010_icon_shipment.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0010 - Tracking List</td>
+			<td><a href="./html/TR0010.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0110_AIR - Track Shipment (Air) Status Tab</td>
+			<td><a href="./html/TR0110_AIR.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0110_SEA - Track Shipment (Sea) Status Tab</td>
+			<td><a href="./html/TR0110_SEA.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0020 - Shipment Tab</td>
+			<td><a href="./html/TR0120.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0030 - Map Tab</td>
+			<td><a href="./html/TR0130.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">TR0040 - Map Layer Popup</td>
+			<td><a href="./html/TR0140.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">RN0010</td>
+			<td><a href="./html/RN0010.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="ino"></td>
+			<td class="tleft">RN0020</td>
+			<td><a href="./html/RN0020.html" target="_blank">바로가기</a></td>
+			<td></td>
+		</tr>
+	</table>
+
+
+
+	<script>
+		$('.ino').each(function(idx){
+			$(this).text((idx+1));
+		});
+	</script>
+	<style>
+		.ino {color:#999999;}
+		.tleft {text-align:left !important;}
+		table {width:100%; border-collapse: collapse;}
+		table tr th {border:1px solid #cccccc; padding:8px 15px; font-size:15px; background:#efefef;}
+		table tr td {border:1px solid #cccccc; text-align:center; padding:8px 15px; font-size:15px;}
+		table tr:hover td {background:#f4f4f4;}
+	</style>
+</body>
+
+</html>
