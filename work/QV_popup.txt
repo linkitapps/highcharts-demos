@@ -1,0 +1,69 @@
+<div id="pointPopup" class="ol-popup vessel"><div class="ol-popup-title"><span class="ol-popup-headtitle-content">Vessel</span><span class="ol-popup-title-content">MERATUS JAYAGIRI</span></div><a href="#" id="popup-closer" class="ol-popup-closer"></a><div id="popup-content"><p class="popup_content">MMSI : 525125019<br>Draught :10.4 M<br>Lat :23.10442000  Lon :117.74577000<br>Status : under way using engine<br>Speed :19.3 Knots<br>Next Port :MYTPP<br>ETA :2021-11-20 04:00:00<br>Updated :2021-11-16 04:30:33(UTC)<br></p></div></div>
+
+.ol-popup.vessel {
+    border: 0px solid #293443;
+    background-color: #a7a7a7;
+    border-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0px;
+}
+
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 160px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ol-popup.vessel > .ol-popup-title {
+    display: block;
+    height: 50px;
+    color: white;
+    line-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    background-color: #44546a;
+    background-image: url("/QvAjaxZfc/QvsViewClient.aspx?public=only&name=Extensions/QvOSM_PVM/icon/c_box01_top.png");
+}
+
+.ol-popup.vessel > .ol-popup-title > .ol-popup-headtitle-content {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #ffffff;
+}
+
+.ol-popup.vessel > .ol-popup-title > .ol-popup-title-content {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #ffff00;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.ol-popup.vessel .popup_content {
+    color: #000;
+    padding: 15px 15px 5px 15px;
+}
+
