@@ -67,3 +67,48 @@
     padding: 15px 15px 5px 15px;
 }
 
+function fnFullScreen(){
+	
+	var browserVr = '11';
+	var browserNm = 'Internet Explorer';
+	var divObj = document.body;
+	var wscript;
+	
+	if(browserNm != 'Internet Explorer'){
+		//IE 외 타브라우저 Fullscreen API 사용가능하나 함수명 다름(필요시 추가)
+		alert("Your browser doesn’t support the fullscreen.");
+		
+		return;
+	}
+	
+	if(!FULL_SCREEN_MODE){
+		//메뉴 영역 접기
+		fnSlideMenu();
+		
+		//FULL_SCREEN_MODE On
+		if( browserVr > 10 && document.msFullscreenEnabled){
+			//IE11 이상 Fullscreen API 사용
+			divObj.msRequestFullscreen();
+		}else{
+			//Older IE
+	        wscript = new ActiveXObject("WScript.Shell");
+	        if(wscript !== null){
+	        	wscript.SendKeys("{F11}");
+	        }
+		}
+		FULL_SCREEN_MODE = true;
+	}else{
+		//FULL_SCREEN_MODE Off
+		if( browserVr > 10 && document.msFullscreenEnabled){
+			//IE11 이상 Fullscreen API 사용
+			document.msExitFullscreen();
+		}else{
+			//Older IE
+	        wscript = new ActiveXObject("WScript.Shell");
+	        if(wscript !== null){
+	        	wscript.SendKeys("{F11}");
+	        }
+		}
+		FULL_SCREEN_MODE = false;
+	}
+}
