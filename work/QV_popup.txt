@@ -121,3 +121,128 @@ function fnFullScreen(){
 [{"ts2Lngtd":"","podEtaYmd":"20210620","fdestEtaYmd":"20210703","podCd":"USLAX","podAtaYmd":"","polLngtd":"129.05","fdestCd":"USLAX","fdestAtaYmd":"","cntrNo":"","polCd":"KRPUS","ts1EtaYmd":"","podLngtd":"-118.2747667","ts2EtaYmd":"","ts3EtaYmd":"","hblNo":"PLIHQ4C76037","ts1Cd":"","ts2Cd":"","ts1AtaYmd":"","ts3Cd":"","ts2AtaYmd":"","ts3AtaYmd":"","podLtitde":"33.73225","fdestLtitde":"33.73225","fltVslNm":"HYUNDAI JUPITER","polLtitde":"35.13333333","ts3Lngtd":"","ts1Lngtd":"","podNm":"LOS ANGELES, CA, UNITED STATES","ts1Ltitde":"","ts2Ltitde":"","fdestNm":"LOS ANGELES, CA, UNITED STATES","ts3Ltitde":"","polEtdYmd":"20210603","polNm":"BUSAN,KOREA, REPUBLIC OF","polAtdYmd":"20210603","ts1EtdYmd":"","fdestLngtd":"-118.2747667","ts2EtdYmd":"","ts3EtdYmd":"","ts1AtdYmd":"","ts1Nm":"","ts2AtdYmd":"","ts2Nm":"","ts3AtdYmd":"","ts3Nm":""}]
 
 [{"routeType":"E","ltitde":"35.0982031","lngtd":"129.03579704","portRnk":"4","subSeq":"1"},{"routeType":"E","ltitde":"35.04056768","lngtd":"129.04879569","portRnk":"4","subSeq":"2"},{"routeType":"E","ltitde":"35.04056768","lngtd":"129.04879569","portRnk":"4","subSeq":"3"},{"routeType":"E","ltitde":"35.00723445","lngtd":"129.15390015","portRnk":"4","subSeq":"4"},{"routeType":"E","ltitde":"35.41393161","lngtd":"129.44229126","portRnk":"4","subSeq":"5"},{"routeType":"E","ltitde":"36.13727218","lngtd":"129.67163086","portRnk":"4","subSeq":"6"},{"routeType":"E","ltitde":"36.11493509","lngtd":"129.55352783","portRnk":"4","subSeq":"7"},{"routeType":"E","ltitde":"41.12074559","lngtd":"140.08117676","portRnk":"4","subSeq":"8"},{"routeType":"E","ltitde":"41.35756317","lngtd":"140.34072876","portRnk":"4","subSeq":"9"},{"routeType":"E","ltitde":"41.49137989","lngtd":"140.51975857","portRnk":"4","subSeq":"10"},{"routeType":"E","ltitde":"41.62577861","lngtd":"140.97097585","portRnk":"4","subSeq":"11"},{"routeType":"E","ltitde":"41.45362853","lngtd":"141.57486256","portRnk":"4","subSeq":"12"},{"routeType":"E","ltitde":"34.11180456","lngtd":"-120.45959473","portRnk":"4","subSeq":"13"},{"routeType":"E","ltitde":"34.13454168","lngtd":"-120.30029297","portRnk":"4","subSeq":"14"},{"routeType":"E","ltitde":"34.12767988","lngtd":"-119.22158425","portRnk":"4","subSeq":"15"},{"routeType":"E","ltitde":"34.0684886","lngtd":"-119.1362295","portRnk":"4","subSeq":"16"},{"routeType":"E","ltitde":"33.88890108","lngtd":"-118.46215432","portRnk":"4","subSeq":"17"},{"routeType":"E","ltitde":"33.88890108","lngtd":"-118.46215432","portRnk":"4","subSeq":"18"},{"routeType":"E","ltitde":"33.90227967","lngtd":"-118.41154785","portRnk":"4","subSeq":"19"}]
+
+
+
+
+
+
+
+<div id="pointPopup" class="ol-popup vessel"><div class="ol-popup-title"><img class="port-img" src="/QvAjaxZfc/QvsViewClient.aspx?public=only&amp;name=Extensions/QvOSM_PVM_CUSTOM/icon/marker_port.png"><span class="ol-popup-title-content">RH317</span></div><a href="#" id="popup-closer" class="ol-popup-closer"></a><div id="popup-content" style="background-image: url(&quot;/QvAjaxZfc/QvsViewClient.aspx?public=only&amp;name=Extensions/QvOSM_PVM_CUSTOM/icon/air_bg.png&quot;);"><div class="popup_content"><br>
+<table width="210">
+<tbody>
+<tr>
+<td style="width: 120px;">HKHKG</td>
+<td style="width: 90px;">VNHAN</td>
+</tr>
+<tr>
+<td style="width: 120px;">Actual</td>
+<td style="width: 90px;">Estimate</td>
+</tr>
+<tr>
+<td style="width: 120px;">14 Dec 20:35</td>
+<td style="width: 90px;">14 Dec 21:00</td>
+</tr>
+<tr style="height: 3px;">
+<td colspan="2"><hr style="height:1px;color=white;"></td>
+</tr>
+<tr>
+<td colspan="2">Lat :21.2401&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lon :105.7328<br>Speed :138.000 Kts<br>Altitude :1200 ft<br>Updated :<font size="2">2021-12-14 13:52:40(UTC)
+</font></td>
+</tr>
+</tbody>
+</table></div></div></div>
+
+.ol-popup.vessel {
+    border: 1px solid #000;
+    background-color: #282a3e;
+    padding: 0px;
+    padding-bottom: 3px;
+}
+
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+
+.ol-popup.vessel:before {
+    border-top-color: #000;
+}
+
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ol-popup.vessel > .ol-popup-title {
+    display: block;
+    height: 37px;
+    color: white;
+    line-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #000;
+    background-color: #44546a;
+}
+
+.ol-popup.vessel > .ol-popup-title > .ol-popup-title-content {
+    font-size: 17px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: -6px;
+}
+
+.ol-popup.vessel a {
+    color: #a0b2c0;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.ol-popup-closer:after {
+    content: "x";
+    font-size: 19px;
+}
+
+#popup-content {
+    background-size: 100% 71%;
+    background-repeat: no-repeat;
+    background-image: url(/QvAjaxZfc/QvsViewClient.aspx?public=only&name=Extensions/QvOSM_PVM_CUSTOM/icon/air_bg.png);
+}
+
+.ol-popup .popup_content {
+    color: #037da6;
+    margin: 0px;
+}
+
+.ol-popup.vessel .popup_content {
+    color: #fff;
+    padding: 15px 15px 5px 15px;
+}
+
+.ol-popup.vessel .popup_content table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+.ol-popup.vessel .popup_content hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
